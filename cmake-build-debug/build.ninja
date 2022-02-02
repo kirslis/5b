@@ -221,6 +221,12 @@ build libs/data_structures/CMakeFiles/data_structures.dir/ordered_array/ordered_
   OBJECT_DIR = libs\data_structures\CMakeFiles\data_structures.dir
   OBJECT_FILE_DIR = libs\data_structures\CMakeFiles\data_structures.dir\ordered_array
 
+build libs/data_structures/CMakeFiles/data_structures.dir/vector/vector.c.obj: C_COMPILER__data_structures_Debug C$:/Users/HP/CLionProjects/course/libs/data_structures/vector/vector.c || cmake_object_order_depends_target_data_structures
+  DEP_FILE = libs\data_structures\CMakeFiles\data_structures.dir\vector\vector.c.obj.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = libs\data_structures\CMakeFiles\data_structures.dir
+  OBJECT_FILE_DIR = libs\data_structures\CMakeFiles\data_structures.dir\vector
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target data_structures
@@ -229,7 +235,7 @@ build libs/data_structures/CMakeFiles/data_structures.dir/ordered_array/ordered_
 #############################################
 # Link the static library libs\data_structures\libdata_structures.a
 
-build libs/data_structures/libdata_structures.a: C_STATIC_LIBRARY_LINKER__data_structures_Debug libs/data_structures/CMakeFiles/data_structures.dir/bitset/bitset.c.obj libs/data_structures/CMakeFiles/data_structures.dir/unordered_array/unordered_array.c.obj libs/data_structures/CMakeFiles/data_structures.dir/ordered_array/ordered_array.c.obj
+build libs/data_structures/libdata_structures.a: C_STATIC_LIBRARY_LINKER__data_structures_Debug libs/data_structures/CMakeFiles/data_structures.dir/bitset/bitset.c.obj libs/data_structures/CMakeFiles/data_structures.dir/unordered_array/unordered_array.c.obj libs/data_structures/CMakeFiles/data_structures.dir/ordered_array/ordered_array.c.obj libs/data_structures/CMakeFiles/data_structures.dir/vector/vector.c.obj
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = libs\data_structures\CMakeFiles\data_structures.dir
   POST_BUILD = cd .
