@@ -28,10 +28,13 @@ void reserve(vector *v, size_t newCapacity) {
     if (newCapacity == 0) {
         v->data = (int *) realloc(v->data, newCapacity);
         v->capacity = newCapacity;
+        v->size = newCapacity;
         v->data = NULL;
     } else {
         v->data = (int *) realloc(v->data, sizeof(int) * newCapacity);
         v->capacity = newCapacity;
+        if(v->size > newCapacity)
+            v->size = newCapacity;
         isCorrectVector(*v);
     }
 }
@@ -45,7 +48,8 @@ void shrinkToFit(vector *v) {
 }
 
 void deleteVector(vector *v) {
-    free(v->data);
+    if (!isEmpty(v))
+        free(v->data); // ошибка на пустых массивах
     clear(v);
     v->capacity = 0;
 }
@@ -81,4 +85,25 @@ void popBack(vector *v) {
     }
     realloc(v->data, v->size - 1);
     v->size -= 1;
+}
+
+int *atVector(vector *v, size_t index) {
+    if (v->size <= index) {
+        fprintf(stderr, "IndexError: a[%d] is not exists", index);
+    } else
+        return (int *) &v->data[index];
+}
+
+int *back(vector *v) {
+    if (isEmpty(v))
+        fprintf(stderr, "No elements exist");
+    else
+        return &v->data[v->size - 1];
+}
+
+int* front(vector *v){
+    if(isEmpty(v))
+        fprintf(stderr, "No elements exist");
+    else
+        return &v->data[0];
 }
