@@ -46,4 +46,6 @@ int* back(vector *v);
 
 int* front(vector *v);
 
+bool isEqualVectors(vector *v1, vector *v2);
+
 #endif //COURSE_VECTOR_H

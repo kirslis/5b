@@ -33,7 +33,7 @@ void reserve(vector *v, size_t newCapacity) {
     } else {
         v->data = (int *) realloc(v->data, sizeof(int) * newCapacity);
         v->capacity = newCapacity;
-        if(v->size > newCapacity)
+        if (v->size > newCapacity)
             v->size = newCapacity;
         isCorrectVector(*v);
     }
@@ -101,9 +101,20 @@ int *back(vector *v) {
         return &v->data[v->size - 1];
 }
 
-int* front(vector *v){
-    if(isEmpty(v))
+int *front(vector *v) {
+    if (isEmpty(v))
         fprintf(stderr, "No elements exist");
     else
         return &v->data[0];
+}
+
+bool isEqualVectors(vector *v1, vector *v2) {
+    if (v1->size == v2->size) {
+        for (int i = 0; i < v1->size; ++i) {
+            if (v1->data[i] != v2->data[i])
+                return 0;
+        }
+        return 1;
+    }
+    return 0;
 }

@@ -6,8 +6,15 @@ void test_pushBack_emptyVector() {
     vector v = createVector(10);
 
     pushBack(&v, 1);
-    assert (v.size == 1 && v.data[v.size - 1] == 1);
+
+    vector v2 = createVector(1);
+    v2.data[0] = 1;
+    v2.size = 1;
+
+    assert (isEqualVectors(&v, &v2));
+
     deleteVector(&v);
+    deleteVector(&v2);
 }
 
 void test_pushBack_fullVector() {
@@ -18,8 +25,33 @@ void test_pushBack_fullVector() {
     v.size = 5;
 
     pushBack(&v, 1);
-    assert (v.size == 6 && v.data[v.size - 1] == 1);
+
+    vector v2 = createVector(6);
+    for (int i = 0; i < 5; ++i) {
+        v2.data[i] = i;
+    }
+    v2.data[5] = 1;
+    v2.size = 6;
+
+    assert (isEqualVectors(&v, &v2));
+
     deleteVector(&v);
+    deleteVector(&v2);
+}
+
+void test_pushBack_zeroVector(){
+    vector v = createVector(1);
+
+    pushBack(&v, 1);
+
+    vector v2 = createVector(1);
+    v2.data[0] = 1;
+    v2.size = 1;
+
+    assert(isEqualVectors(&v, &v2));
+
+    deleteVector(&v);
+    deleteVector(&v2);
 }
 
 void test_popBack_notEmptyVector() {
@@ -79,6 +111,7 @@ void test_front_oneElementInVector(){
 void test() {
     test_pushBack_fullVector();
     test_pushBack_emptyVector();
+    test_pushBack_zeroVector();
     test_popBack_notEmptyVector();
     test_atVector_notEmptyVector();
     test_atVector_requestToLastElement();
