@@ -15,7 +15,7 @@ typedef struct vector {
     size_t capacity;
 } vector;
 
-void isCorrectVector(vector v);
+void memoryError(vector v);
 
 //создает структуру vector, с capacity равной n
 vector createVector(size_t n);

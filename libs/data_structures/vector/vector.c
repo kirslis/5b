@@ -6,7 +6,7 @@
 #include "malloc.h"
 #include "stdbool.h"
 
-void isCorrectVector(vector v) {
+void memoryError(vector v) {
     if (v.data == NULL) {
         fprintf(stderr, "bad alloc");
         exit(1);
@@ -17,7 +17,7 @@ vector createVector(size_t n) {
     vector v;
     if (n) {
         v = (vector) {malloc(sizeof(int) * n), 0, n};
-        isCorrectVector(v);
+        memoryError(v);
     } else
         v = (vector) {NULL, 0, n};
 
@@ -27,16 +27,15 @@ vector createVector(size_t n) {
 void reserve(vector *v, size_t newCapacity) {
     if (newCapacity == 0) {
         v->data = (int *) realloc(v->data, newCapacity);
-        v->capacity = newCapacity;
-        v->size = newCapacity;
         v->data = NULL;
     } else {
         v->data = (int *) realloc(v->data, sizeof(int) * newCapacity);
-        v->capacity = newCapacity;
-        if (v->size > newCapacity)
-            v->size = newCapacity;
-        isCorrectVector(*v);
+        memoryError(*v);
     }
+
+    v->capacity = newCapacity;
+    if (v->size > newCapacity)
+        v->size = newCapacity;
 }
 
 void clear(vector *v) {
@@ -50,6 +49,7 @@ void shrinkToFit(vector *v) {
 void deleteVector(vector *v) {
     if (!isEmpty(v))
         free(v->data); // ошибка на пустых массивах
+    v->data = NULL;
     clear(v);
     v->capacity = 0;
 }
@@ -67,7 +67,7 @@ int getVectorValue(vector *v, size_t i) {
 }
 
 void pushBack(vector *v, int x) {
-    if (v->size == v->capacity) {
+    if (isFull(v)) {
         if (v->capacity != 0)
             reserve(v, v->capacity * 2);
         else
@@ -78,12 +78,16 @@ void pushBack(vector *v, int x) {
     v->size += 1;
 }
 
-void popBack(vector *v) {
+void emptyVectorError(vector *v) {
     if (isEmpty(v)) {
         fprintf(stderr, "empty vector");
         exit(1);
     }
-    realloc(v->data, v->size - 1);
+}
+
+void popBack(vector *v) {
+    emptyVectorError(v);
+
     v->size -= 1;
 }
 
@@ -95,17 +99,15 @@ int *atVector(vector *v, size_t index) {
 }
 
 int *back(vector *v) {
-    if (isEmpty(v))
-        fprintf(stderr, "No elements exist");
-    else
-        return &v->data[v->size - 1];
+    emptyVectorError(v);
+
+    return &v->data[v->size - 1];
 }
 
 int *front(vector *v) {
-    if (isEmpty(v))
-        fprintf(stderr, "No elements exist");
-    else
-        return &v->data[0];
+    emptyVectorError(v);
+
+    return &v->data[0];
 }
 
 bool isEqualVectors(vector *v1, vector *v2) {

@@ -18,3 +18,7 @@
 195	297	6657563280454011	course.exe	68fe254756ffcbaf
 2	83	6657565565124917	CMakeFiles/course.dir/main.c.obj	a18ef011961e3de7
 84	162	6657565565852031	course.exe	68fe254756ffcbaf
+3	127	6657578729509291	CMakeFiles/course.dir/main.c.obj	a18ef011961e3de7
+9	130	6657578729529688	libs/data_structures/CMakeFiles/data_structures.dir/vector/vector.c.obj	fad7a433b4651e12
+130	210	6657578730349730	libs/data_structures/libdata_structures.a	a6e27dd465c0851a
+211	419	6657578731503474	course.exe	68fe254756ffcbaf
