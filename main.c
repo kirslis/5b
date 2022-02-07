@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "libs/data_structures/vector/vector.h"
 #include <assert.h>
+#include "libs/data_structures/vectorVoid/vectorVoid.h"
 
 void test_pushBack_emptyVector() {
     vector v = createVector(10);
@@ -39,7 +40,7 @@ void test_pushBack_fullVector() {
     deleteVector(&v2);
 }
 
-void test_pushBack_zeroVector(){
+void test_pushBack_zeroVector() {
     vector v = createVector(1);
 
     pushBack(&v, 1);
@@ -78,7 +79,7 @@ void test_atVector_notEmptyVector() {
     deleteVector(&v);
 }
 
-void test_atVector_requestToLastElement(){
+void test_atVector_requestToLastElement() {
     vector v = createVector(5);
     for (int i = 0; i < 5; ++i) {
         v.data[i] = i;
@@ -90,7 +91,7 @@ void test_atVector_requestToLastElement(){
     deleteVector(&v);
 }
 
-void test_back_oneElementInVector(){
+void test_back_oneElementInVector() {
     vector v = createVector(1);
     v.size = 1;
 
@@ -99,7 +100,7 @@ void test_back_oneElementInVector(){
     deleteVector(&v);
 }
 
-void test_front_oneElementInVector(){
+void test_front_oneElementInVector() {
     vector v = createVector(1);
     v.size = 1;
 
@@ -120,5 +121,23 @@ void test() {
 }
 
 int main() {
-    test();
+    size_t n;
+    scanf("%zd", &n);
+
+    vectorVoid v = createVectorV(0, sizeof(int));
+    for (int i = 0; i < n; i++) {
+        int x;
+        scanf("%d", &x);
+
+        pushBackV(&v, &x);
+    }
+
+    for (int i = 0; i < n; i++) {
+        int x;
+        getVectorValueV(&v, i, &x);
+
+        printf("%d ", x);
+    }
+
+    return 0;
 }

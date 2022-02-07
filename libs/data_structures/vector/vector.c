@@ -120,3 +120,4 @@ bool isEqualVectors(vector *v1, vector *v2) {
     }
     return 0;
 }
+
