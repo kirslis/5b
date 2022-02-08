@@ -2,142 +2,136 @@
 #include "libs/data_structures/vector/vector.h"
 #include <assert.h>
 #include "libs/data_structures/vectorVoid/vectorVoid.h"
+#include "string.h"
 
-void test_pushBack_emptyVector() {
-    vector v = createVector(10);
+void test_pushBack_emptyVectorVoid() {
+    vectorVoid v = createVectorV(10, sizeof(int));
 
-    pushBack(&v, 1);
+    int x = 1;
+    pushBackV(&v, &x);
 
-    vector v2 = createVector(1);
-    v2.data[0] = 1;
+    vectorVoid v2 = createVectorV(1, sizeof(int));
+
+    char *destination = (char *) v2.data;
+    memcpy(destination, &x, v2.baseTypeSize);
     v2.size = 1;
 
-    assert (isEqualVectors(&v, &v2));
+    assert (isEqualVectorsV(&v, &v2));
 
-    deleteVector(&v);
-    deleteVector(&v2);
+    deleteVectorV(&v);
+    deleteVectorV(&v2);
 }
 
-void test_pushBack_fullVector() {
-    vector v = createVector(5);
+void test_pushBack_fullVectorVoid() {
+    vectorVoid v = createVectorV(5, sizeof(int));
+
     for (int i = 0; i < 5; ++i) {
-        v.data[i] = i;
+        int x = i;
+        char *destination = (char *) v.data + i * v.baseTypeSize;
+        memcpy(destination, &x, v.baseTypeSize);
     }
     v.size = 5;
 
-    pushBack(&v, 1);
+    int b = 5;
+    pushBackV(&v, &b);
 
-    vector v2 = createVector(6);
-    for (int i = 0; i < 5; ++i) {
-        v2.data[i] = i;
+    vectorVoid v2 = createVectorV(6, sizeof(int));
+    for (int i = 0; i < 6; ++i) {
+        int x = i;
+        char *destination = (char *) v2.data + i * v2.baseTypeSize;
+        memcpy(destination, &x, v2.baseTypeSize);
     }
-    v2.data[5] = 1;
     v2.size = 6;
 
-    assert (isEqualVectors(&v, &v2));
+    assert (isEqualVectorsV(&v, &v2));
 
-    deleteVector(&v);
-    deleteVector(&v2);
+    deleteVectorV(&v);
+    deleteVectorV(&v2);
 }
 
-void test_pushBack_zeroVector() {
-    vector v = createVector(1);
+void test_pushBack_zeroVectorVoid() {
+    vectorVoid v = createVectorV(1, sizeof(int));
 
-    pushBack(&v, 1);
+    int x = 1;
+    pushBackV(&v, &x);
 
-    vector v2 = createVector(1);
-    v2.data[0] = 1;
+    vectorVoid v2 = createVectorV(1, sizeof(int));
+
+    char *destination = (char *) v2.data;
+    memcpy(destination, &x, v2.baseTypeSize);
     v2.size = 1;
 
-    assert(isEqualVectors(&v, &v2));
+    assert(isEqualVectorsV(&v, &v2));
 
-    deleteVector(&v);
-    deleteVector(&v2);
+    deleteVectorV(&v);
+    deleteVectorV(&v2);
 }
 
-void test_popBack_notEmptyVector() {
-    vector v = createVector(0);
-    pushBack(&v, 10);
+void test_popBack_notEmptyVectorVoid() {
+    vectorVoid v = createVectorV(0, sizeof(int));
+
+    int x = 10;
+    pushBackV(&v, &x);
 
     assert (v.size == 1);
-    popBack(&v);
+    popBackV(&v);
     assert (v.size == 0);
     assert (v.capacity == 1);
 
-    deleteVector(&v);
+    deleteVectorV(&v);
 }
 
-void test_atVector_notEmptyVector() {
-    vector v = createVector(5);
+void test_getVectorValueV_notEmptyVector() {
+    vectorVoid v = createVectorV(5, sizeof(int));
+
     for (int i = 0; i < 5; ++i) {
-        v.data[i] = i;
+        int x = i;
+        pushBackV(&v, &x);
     }
     v.size = 5;
 
-    assert(atVector(&v, 0) == &v.data[0]);
+    int value;
+    getVectorValueV(&v, 0, &value);
 
-    deleteVector(&v);
+    int rightValue;
+    memcpy(&rightValue, v.data, v.baseTypeSize);
+
+    assert(value == rightValue);
+
+    deleteVectorV(&v);
 }
 
-void test_atVector_requestToLastElement() {
-    vector v = createVector(5);
+void test_getVectorValueV_requestToLastElement() {
+    vectorVoid v = createVectorV(5, sizeof(int));
+
     for (int i = 0; i < 5; ++i) {
-        v.data[i] = i;
+        int x = i;
+        pushBackV(&v, &x);
     }
     v.size = 5;
 
-    assert(atVector(&v, 4) == &v.data[4]);
+    int value;
+    getVectorValueV(&v, 4, &value);
 
-    deleteVector(&v);
-}
+    int rightValue;
+    memcpy(&rightValue, v.data + 4 * v.baseTypeSize, v.baseTypeSize);
 
-void test_back_oneElementInVector() {
-    vector v = createVector(1);
-    v.size = 1;
+    assert(value == rightValue);
 
-    assert(back(&v) == &v.data[0]);
-
-    deleteVector(&v);
-}
-
-void test_front_oneElementInVector() {
-    vector v = createVector(1);
-    v.size = 1;
-
-    assert(front(&v) == &v.data[0]);
-
-    deleteVector(&v);
+    deleteVectorV(&v);
 }
 
 void test() {
-    test_pushBack_fullVector();
-    test_pushBack_emptyVector();
-    test_pushBack_zeroVector();
-    test_popBack_notEmptyVector();
-    test_atVector_notEmptyVector();
-    test_atVector_requestToLastElement();
-    test_back_oneElementInVector();
-    test_front_oneElementInVector();
+    test_pushBack_emptyVectorVoid();
+    test_pushBack_fullVectorVoid();
+    test_pushBack_zeroVectorVoid();
+    test_popBack_notEmptyVectorVoid();
+    test_getVectorValueV_notEmptyVector();
+    test_getVectorValueV_requestToLastElement();
 }
 
 int main() {
-    size_t n;
-    scanf("%zd", &n);
-
-    vectorVoid v = createVectorV(0, sizeof(int));
-    for (int i = 0; i < n; i++) {
-        int x;
-        scanf("%d", &x);
-
-        pushBackV(&v, &x);
-    }
-
-    for (int i = 0; i < n; i++) {
-        int x;
-        getVectorValueV(&v, i, &x);
-
-        printf("%d ", x);
-    }
+    test();
 
     return 0;
 }

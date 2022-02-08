@@ -42,4 +42,6 @@ void pushBackV(vectorVoid *v, int *x);
 
 void popBackV(vectorVoid *v);
 
+bool isEqualVectorsV(vectorVoid *v1, vectorVoid *v2);
+
 #endif //COURSE_VECTORVOID_H

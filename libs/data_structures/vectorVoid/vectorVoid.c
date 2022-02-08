@@ -107,3 +107,16 @@ void popBackV(vectorVoid *v) {
     v->size -= 1;
 }
 
+bool isEqualVectorsV(vectorVoid *v1, vectorVoid *v2) {
+    if (v1->size == v2->size) {
+        for (int i = 0; i < v1->size; ++i) {
+            char *x, *y;
+            getVectorValueV(v1, i, &x);
+            getVectorValueV(v2, i, &y);
+            if (x != y)
+                return 0;
+        }
+        return 1;
+    }
+    return 0;
+}
