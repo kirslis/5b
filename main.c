@@ -7,14 +7,14 @@
 int main() {
     matrix m = createMatrixFromArray(
             (int[]) {
-                    7,1,2,
-                    1,8,1,
-                    3, 2,3
+                    1,2,3,
+                    4,5,6,
+                    7, 8,9
             },
             3, 3
     );
 
-    sortRowsByMinElement(m);
+    swapMinAndMaxRows(m);
 
     outputMatrix(m);
 

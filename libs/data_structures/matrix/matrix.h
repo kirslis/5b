@@ -63,6 +63,6 @@ void insertionSortColsMatrixByColCriteria(matrix m, int (*criteria)(int *, int))
 
 int getMaxOfRow(int *a, int n);
 
-void sortRowsByMinElement(matrix m);
+void swapMinAndMaxRows(matrix m);
 
 #endif //COURSE_MATRIX_H
