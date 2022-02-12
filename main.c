@@ -8,13 +8,13 @@ int main() {
     matrix m = createMatrixFromArray(
             (int[]) {
                     1,2,3,
-                    4,5,6,
-                    7, 8,9
+                    2,5,6,
+                    3, 6,9
             },
             3, 3
     );
 
-    swapMinAndMaxRows(m);
+    getSquareOfMatrixIfSymmetric(&m);
 
     outputMatrix(m);
 

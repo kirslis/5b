@@ -5,6 +5,7 @@
 #include "malloc.h"
 #include "stdio.h"
 #include "stdbool.h"
+#include "assert.h"
 
 matrix getMemMatrix(int nRows, int nCols) {
     int **values = (int **) malloc(sizeof(int *) * nRows);
@@ -230,11 +231,36 @@ void sortRowsByMinElement(matrix m) {
     insertionSortRowsMatrixByRowCriteria(m, getMaxOfRow);
 }
 
-void swapMinAndMaxRows(matrix m){
+void swapMinAndMaxRows(matrix m) {
     position p1 = getMaxValuePos(m);
     position p2 = getMinValuePos(m);
 
     swapRows(m, p1.rowIndex, p2.rowIndex);
+}
+
+matrix mulMatrices(matrix m1, matrix m2) {
+    assert(m1.nCols == m2.nRows);
+    matrix m3 = getMemMatrix(m1.nRows, m2.nCols);
+
+    for (int i = 0; i < m1.nRows; ++i) {
+        for (int j = 0; j < m2.nCols; ++j) {
+            m3.values[i][j] = 0;
+        }
+    }
+
+    for (int i = 0; i < m1.nRows; ++i) {
+        for (int j = 0; j < m2.nCols; ++j) {
+            for (int k = 0; k < m1.nCols; ++k) {
+                m3.values[i][j] += m1.values[i][k] * m2.values[k][j];
+            }
+        }
+    }
+    return m3;
+}
+
+void getSquareOfMatrixIfSymmetric(matrix *m) {
+    if (isSymmetricMatrix(*m))
+        *m = mulMatrices(*m, *m);
 }
 
 

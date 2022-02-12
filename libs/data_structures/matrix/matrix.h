@@ -65,4 +65,8 @@ int getMaxOfRow(int *a, int n);
 
 void swapMinAndMaxRows(matrix m);
 
+void getSquareOfMatrixIfSymmetric(matrix *m);
+
+matrix mulMatrices(matrix m1, matrix m2);
+
 #endif //COURSE_MATRIX_H
