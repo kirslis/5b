@@ -4,5 +4,9 @@ add_library(
         unordered_array/unordered_array.c unordered_array/unordered_array.h
         ordered_array/ordered_array.c ordered_array/ordered_array.h
         vector/vector.h vector/vector.c
-        vectorVoid/vectorVoid.c vectorVoid/vectorVoid.h)
+        vectorVoid/vectorVoid.c vectorVoid/vectorVoid.h
+        matrix/matrix.c matrix/matrix.h
+)
+
+target_link_libraries(data_structures algorithms)
 

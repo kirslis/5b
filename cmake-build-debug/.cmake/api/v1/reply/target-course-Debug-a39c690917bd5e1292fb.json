@@ -75,7 +75,7 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 3,
+			"backtrace" : 2,
 			"id" : "algorithms::@4f84be16bc75261b2db5"
 		},
 		{
