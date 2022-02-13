@@ -7,14 +7,14 @@
 int main() {
     matrix m = createMatrixFromArray(
             (int[]) {
-                    1,2,3,
+                    1,7,2,
                     2,5,6,
                     3, 6,9
             },
             3, 3
     );
 
-    getSquareOfMatrixIfSymmetric(&m);
+    sortRowsByMaxElement(m);
 
     outputMatrix(m);
 

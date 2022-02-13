@@ -69,4 +69,8 @@ void getSquareOfMatrixIfSymmetric(matrix *m);
 
 matrix mulMatrices(matrix m1, matrix m2);
 
+void sortColsByMinElement(matrix m);
+
+void sortRowsByMaxElement(matrix m);
+
 #endif //COURSE_MATRIX_H

@@ -195,25 +195,23 @@ matrix *createArrayOfMatrixFromArray(const int *values, size_t nMatrices, size_t
 }
 
 void insertionSortRowsMatrixByRowCriteria(matrix m, int (*criteria)(int *, int)) {
-    int subMatrix[m.nRows];
+    int maxElementRow[m.nRows];
 
     for (int i = 0; i < m.nRows; ++i) {
-        subMatrix[i] = criteria(m.values[i], m.nCols);
+        maxElementRow[i] = criteria(m.values[i], m.nCols);
     }
 
     for (int i = 0; i < m.nRows; ++i) {
-        int *t = m.values[i];
-        int subT = subMatrix[i];
+        int t = maxElementRow[i];
         int j = i;
 
-        while (j > 0 && subMatrix[j - 1] > subT) {
-            m.values[j] = m.values[j - 1];
-            subMatrix[j] = subMatrix[j - 1];
+        while (j > 0 && maxElementRow[j - 1] > t) {
+            swapRows(m, j, j-1);
+            maxElementRow[j] = maxElementRow[j - 1];
             j--;
         }
 
-        m.values[j] = t;
-        subMatrix[j] = subT;
+        maxElementRow[j] = t;
     }
 }
 
@@ -227,7 +225,7 @@ int getMaxOfRow(int *a, int n) {
     return max;
 }
 
-void sortRowsByMinElement(matrix m) {
+void sortRowsByMaxElement(matrix m) {
     insertionSortRowsMatrixByRowCriteria(m, getMaxOfRow);
 }
 
@@ -263,4 +261,42 @@ void getSquareOfMatrixIfSymmetric(matrix *m) {
         *m = mulMatrices(*m, *m);
 }
 
+void insertionSortColsMatrixByColCriteria(matrix m, int (*criteria)(int *, int)) {
+    int collMinElements[m.nCols];
+
+    for (int i = 0; i < m.nCols; ++i) {
+        int colsElems[m.nRows];
+        for (int j = 0; j < m.nRows; ++j) {
+            colsElems[j] = m.values[j][i];
+        }
+        collMinElements[i] = criteria(colsElems, m.nRows);
+    }
+
+    for (int i = 0; i < m.nRows; ++i) {
+        int t = collMinElements[i];
+        int j = i;
+
+        while (j > 0 && collMinElements[j - 1] > t) {
+            swapColumns(m, j, j-1);
+            collMinElements[j] = collMinElements[j - 1];
+            j--;
+        }
+
+        collMinElements[j] = t;
+    }
+}
+
+int getMinOfCol(int *a, int n){
+    int min = a[0];
+
+    for (int i = 0; i < n; ++i)
+        if (a[i] < min)
+            min = a[i];
+
+    return min;
+}
+
+void sortColsByMinElement(matrix m){
+    insertionSortColsMatrixByColCriteria(m, getMinOfCol);
+}
 
