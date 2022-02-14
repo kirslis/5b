@@ -378,7 +378,101 @@ void test_transposeIfSquareMatrixHasNotEqualSumOfRows_zeroMatrix(){
     freeMemMatrix(m1);
 }
 
+void test_isMutuallyInverseMatrices_inverseMatrices(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                2, 5, 7,
+                6,3,4,
+                5,-2,-3
+            },
+            3, 3
+    );
 
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                1, -1, 1,
+                -38, 41, -34,
+                27, -29, 24
+            },
+            3, 3
+    );
+
+    assert(isMutuallyInverseMatrices(m, m1));
+
+    freeMemMatrix(m);
+    freeMemMatrix(m1);
+}
+
+void test_isMutuallyInverseMatrices_notInverseMatrices(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    2, 5, 2,
+                    6,3,4,
+                    5,-2,-3
+            },
+            3, 3
+    );
+
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    1, -1, 1,
+                    -38, 41, -34,
+                    27, -29, 24
+            },
+            3, 3
+    );
+
+    assert(isMutuallyInverseMatrices(m, m1) == 0);
+
+    freeMemMatrix(m);
+    freeMemMatrix(m1);
+}
+
+void test_isMutuallyInverseMatrices_EMatrices(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    1,0,0,
+                    0,1,0,
+                    0,0,1
+            },
+            3, 3
+    );
+
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    1,0,0,
+                    0,1,0,
+                    0,0,1
+            },
+            3, 3
+    );
+
+    assert(isMutuallyInverseMatrices(m, m1));
+
+    freeMemMatrix(m);
+    freeMemMatrix(m1);
+}
+
+void test_isMutuallyInverseMatrices_zeroMatrices(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+
+            },
+            0, 0
+    );
+
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+
+            },
+            0, 0
+    );
+
+    assert(isMutuallyInverseMatrices(m, m1) == 0);
+
+    freeMemMatrix(m);
+    freeMemMatrix(m1);
+}
 
 void test() {
     test_swapMinAndMaxRows_differentRows();
@@ -396,6 +490,10 @@ void test() {
     test_transposeIfSquareMatrixHasNotEqualSumOfRows_noEqualRowsSum();
     test_transposeIfSquareMatrixHasNotEqualSumOfRows_EqualRowsSum();
     test_transposeIfSquareMatrixHasNotEqualSumOfRows_zeroMatrix();
+    test_isMutuallyInverseMatrices_inverseMatrices();
+    test_isMutuallyInverseMatrices_notInverseMatrices();
+    test_isMutuallyInverseMatrices_EMatrices();
+    test_isMutuallyInverseMatrices_zeroMatrices();
 }
 
 

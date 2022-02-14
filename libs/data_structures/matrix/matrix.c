@@ -13,6 +13,8 @@ matrix getMemMatrix(int nRows, int nCols) {
     for (int i = 0; i < nRows; ++i)
         values[i] = (int *) malloc(sizeof(int) * nCols);
 
+    if (!nRows || !nCols )
+        values = NULL;
     return (matrix) {values, nRows, nCols};
 }
 
@@ -327,4 +329,10 @@ void transposeIfSquareMatrixHasNotEqualSumOfRows(matrix m) {
 
     if (isUnique(sumArray, m.nRows))
         transposeSquareMatrix(m);
+}
+
+bool isMutuallyInverseMatrices(matrix m1, matrix m2){
+    if(m1.values == NULL || m2.values == NULL)
+        return 0;
+    return isEMatrix(mulMatrices(m1, m2));
 }
