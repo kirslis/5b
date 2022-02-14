@@ -337,7 +337,7 @@ bool isMutuallyInverseMatrices(matrix m1, matrix m2) {
     return isEMatrix(mulMatrices(m1, m2));
 }
 
-int max(const int *a, int b){
+int max(const int *a, int b) {
     int max = a[0];
     for (int i = 1; i < b; ++i)
         if (a[i] > max)
@@ -356,10 +356,10 @@ long long findSumOfMaxesOfPseudoDiagonal(matrix m) {
         int a[m.nCols];
         int j = 0;
 
-        while(colIndex < m.nCols && rowIndex < m.nRows){
+        while (colIndex < m.nCols && rowIndex < m.nRows) {
             a[j] = m.values[rowIndex][colIndex];
-            rowIndex ++;
-            colIndex ++;
+            rowIndex++;
+            colIndex++;
             j++;
         }
         maxValueOfPseudoDiagonal[i - 1] = max(a, j);
@@ -371,14 +371,50 @@ long long findSumOfMaxesOfPseudoDiagonal(matrix m) {
         int a[m.nRows];
         int j = 0;
 
-        while(colIndex < m.nCols && rowIndex < m.nRows){
+        while (colIndex < m.nCols && rowIndex < m.nRows) {
             a[j] = m.values[rowIndex][colIndex];
-            rowIndex ++;
-            colIndex ++;
+            rowIndex++;
+            colIndex++;
             j++;
         }
         maxValueOfPseudoDiagonal[m.nRows + i - 1] = max(a, j);
     }
 
     return getSum(maxValueOfPseudoDiagonal, numberOfPseudoDiagonals);
+}
+
+int getMin(const int *a, int n) {
+    int min = a[0];
+    for (int i = 0; i < n; ++i)
+        if (a[i] < min)
+            min = a[i];
+
+    return min;
+}
+
+int getMinInArea(matrix m) {
+    position maxPos = getMaxValuePos(m);
+
+    int maxRowIndexForColl[m.nCols];
+
+    for (int i = 0; i < maxPos.colIndex; ++i) {
+        maxRowIndexForColl[i] = i + 1;
+    }
+    for (int i = maxPos.colIndex; i < m.nCols; ++i) {
+        maxRowIndexForColl[i] = maxPos.rowIndex - (i - maxPos.colIndex) + 1;
+    }
+
+    int valuesInArea[m.nCols * m.nRows];
+    int countOfValuesInArea = 0;
+
+    for (int iCol = 0; iCol < m.nCols; ++iCol) {
+        int iRow = 0;
+        while (iRow < maxRowIndexForColl[iCol]) {
+            valuesInArea[countOfValuesInArea] = m.values[iRow][iCol];
+            iRow++;
+            countOfValuesInArea++;
+        }
+    }
+
+    return getMin(valuesInArea, countOfValuesInArea);
 }

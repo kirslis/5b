@@ -532,6 +532,50 @@ void test_findSumOfMaxesOfPseudoDiagonal_emptyMatrix(){
     freeMemMatrix(m);
 }
 
+void test_getMinInArea_lastElementIsMax(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    3,2,1,
+                    4,5,6,
+                    7, 8,9
+            },
+            3, 3
+    );
+
+    assert(getMinInArea(m) == 1);
+
+    freeMemMatrix(m);
+}
+
+void test_getMinInArea_firstElementIsMax(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    9,2,1,
+                    4,5,6,
+                    7, 8,3
+            },
+            3, 3
+    );
+
+    assert(getMinInArea(m) == 9);
+
+    freeMemMatrix(m);
+}
+
+void test_getMinInArea_middleElementIsMax(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    5,2,4,
+                    1,9,6,
+                    7, 8,3
+            },
+            3, 3
+    );
+
+    assert(getMinInArea(m) == 2);
+
+    freeMemMatrix(m);
+}
 
 void test() {
     test_swapMinAndMaxRows_differentRows();
@@ -563,6 +607,10 @@ void test() {
     test_findSumOfMaxesOfPseudoDiagonal_rectangularMatrix();
     test_findSumOfMaxesOfPseudoDiagonal_EMatrix();
     test_findSumOfMaxesOfPseudoDiagonal_emptyMatrix();
+
+    test_getMinInArea_lastElementIsMax();
+    test_getMinInArea_firstElementIsMax();
+    test_getMinInArea_middleElementIsMax();
 }
 
 

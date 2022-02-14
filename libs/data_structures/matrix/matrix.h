@@ -79,4 +79,6 @@ bool isMutuallyInverseMatrices(matrix m1, matrix m2);
 
 long long findSumOfMaxesOfPseudoDiagonal(matrix m);
 
+int getMinInArea(matrix m);
+
 #endif //COURSE_MATRIX_H
