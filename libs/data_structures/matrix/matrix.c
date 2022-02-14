@@ -137,7 +137,7 @@ position getMinValuePos(matrix m) {
         for (int j = 0; j < m.nCols; ++j)
             if (m.values[i][j] < minValue) {
                 minValue = m.values[i][j];
-                minValueIndex = (position) {j, i};
+                minValueIndex = (position) {i, j};
             }
 
     return minValueIndex;
@@ -151,7 +151,7 @@ position getMaxValuePos(matrix m) {
         for (int j = 0; j < m.nCols; ++j)
             if (m.values[i][j] > maxValue) {
                 maxValue = m.values[i][j];
-                maxValueIndex = (position) {j, i};
+                maxValueIndex = (position) {i, j};
             }
 
     return maxValueIndex;
@@ -206,7 +206,7 @@ void insertionSortRowsMatrixByRowCriteria(matrix m, int (*criteria)(int *, int))
         int j = i;
 
         while (j > 0 && maxElementRow[j - 1] > t) {
-            swapRows(m, j, j-1);
+            swapRows(m, j, j - 1);
             maxElementRow[j] = maxElementRow[j - 1];
             j--;
         }
@@ -230,10 +230,12 @@ void sortRowsByMaxElement(matrix m) {
 }
 
 void swapMinAndMaxRows(matrix m) {
-    position p1 = getMaxValuePos(m);
-    position p2 = getMinValuePos(m);
+    if (m.nRows != 0) {
+        position p1 = getMaxValuePos(m);
+        position p2 = getMinValuePos(m);
 
-    swapRows(m, p1.rowIndex, p2.rowIndex);
+        swapRows(m, p1.rowIndex, p2.rowIndex);
+    }
 }
 
 matrix mulMatrices(matrix m1, matrix m2) {
@@ -277,7 +279,7 @@ void insertionSortColsMatrixByColCriteria(matrix m, int (*criteria)(int *, int))
         int j = i;
 
         while (j > 0 && collMinElements[j - 1] > t) {
-            swapColumns(m, j, j-1);
+            swapColumns(m, j, j - 1);
             collMinElements[j] = collMinElements[j - 1];
             j--;
         }
@@ -286,7 +288,7 @@ void insertionSortColsMatrixByColCriteria(matrix m, int (*criteria)(int *, int))
     }
 }
 
-int getMinOfCol(int *a, int n){
+int getMinOfCol(int *a, int n) {
     int min = a[0];
 
     for (int i = 0; i < n; ++i)
@@ -296,7 +298,33 @@ int getMinOfCol(int *a, int n){
     return min;
 }
 
-void sortColsByMinElement(matrix m){
+void sortColsByMinElement(matrix m) {
     insertionSortColsMatrixByColCriteria(m, getMinOfCol);
 }
 
+long long getSum(const int *a, int n) {
+    long long sum = 0;
+    for (int i = 0; i < n; ++i)
+        sum += a[i];
+
+    return sum;
+}
+
+bool isUnique(const long long *a, int n) {
+    for (int i = 0; i < n; ++i)
+        for (int j = i + 1; j < n; ++j)
+            if (a[i] == a[j])
+                return 0;
+
+    return 1;
+}
+
+void transposeIfSquareMatrixHasNotEqualSumOfRows(matrix m) {
+    long long sumArray[m.nRows];
+
+    for (int i = 0; i < m.nRows; ++i)
+        sumArray[i] = getSum(m.values[i], m.nCols);
+
+    if (isUnique(sumArray, m.nRows))
+        transposeSquareMatrix(m);
+}

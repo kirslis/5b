@@ -73,4 +73,8 @@ void sortColsByMinElement(matrix m);
 
 void sortRowsByMaxElement(matrix m);
 
+void transposeIfSquareMatrixHasNotEqualSumOfRows(matrix m);
+
+bool isMutuallyInverseMatrices(matrix m1, matrix m2);
+
 #endif //COURSE_MATRIX_H
