@@ -474,26 +474,95 @@ void test_isMutuallyInverseMatrices_zeroMatrices(){
     freeMemMatrix(m1);
 }
 
+void test_findSumOfMaxesOfPseudoDiagonal_squareMatrix(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    2, 5, 2,
+                    6,3,4,
+                    5,-2,-3
+            },
+            3, 3
+    );
+
+    assert(findSumOfMaxesOfPseudoDiagonal(m) == 18);
+
+    freeMemMatrix(m);
+}
+
+void test_findSumOfMaxesOfPseudoDiagonal_rectangularMatrix(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    2, 5, 2, 6,
+                    6, 3, 4, 7,
+                    5,-2,-3,8
+            },
+            3, 4
+    );
+
+    assert(findSumOfMaxesOfPseudoDiagonal(m) == 32);
+
+    freeMemMatrix(m);
+}
+
+void test_findSumOfMaxesOfPseudoDiagonal_EMatrix(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    1,0,0,
+                    0,1,0,
+                    0,0,1
+            },
+            3, 3
+    );
+
+    assert(findSumOfMaxesOfPseudoDiagonal(m) == 0);
+
+    freeMemMatrix(m);
+}
+
+void test_findSumOfMaxesOfPseudoDiagonal_emptyMatrix(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+
+            },
+            0, 0
+    );
+
+    assert(findSumOfMaxesOfPseudoDiagonal(m) == 0);
+
+    freeMemMatrix(m);
+}
+
+
 void test() {
     test_swapMinAndMaxRows_differentRows();
     test_swapMinAndMaxRows_sameRows();
     test_swapMinAndMaxRows_zeroMatrix();
+
     test_sortRowsByMaxElement_differentMaxElements();
     test_sortRowsByMaxElement_sameMaxElements();
     test_sortRowsByMaxElement_zeroMatrix();
+
     test_sortColsByMinElement_sameMinElements();
     test_sortColsByMinElement_differentMinElements();
     test_sortColsByMinElement_zeroMatrix();
+
     test_getSquareOfMatrixIfSymmetric_symmetricMatrix();
     test_getSquareOfMatrixIfSymmetric_notSymmetricMatrix();
     test_getSquareOfMatrixIfSymmetric_zeroMatrix();
+
     test_transposeIfSquareMatrixHasNotEqualSumOfRows_noEqualRowsSum();
     test_transposeIfSquareMatrixHasNotEqualSumOfRows_EqualRowsSum();
     test_transposeIfSquareMatrixHasNotEqualSumOfRows_zeroMatrix();
+
     test_isMutuallyInverseMatrices_inverseMatrices();
     test_isMutuallyInverseMatrices_notInverseMatrices();
     test_isMutuallyInverseMatrices_EMatrices();
     test_isMutuallyInverseMatrices_zeroMatrices();
+
+    test_findSumOfMaxesOfPseudoDiagonal_squareMatrix();
+    test_findSumOfMaxesOfPseudoDiagonal_rectangularMatrix();
+    test_findSumOfMaxesOfPseudoDiagonal_EMatrix();
+    test_findSumOfMaxesOfPseudoDiagonal_emptyMatrix();
 }
 
 

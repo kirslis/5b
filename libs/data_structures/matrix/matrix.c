@@ -13,7 +13,7 @@ matrix getMemMatrix(int nRows, int nCols) {
     for (int i = 0; i < nRows; ++i)
         values[i] = (int *) malloc(sizeof(int) * nCols);
 
-    if (!nRows || !nCols )
+    if (!nRows || !nCols)
         values = NULL;
     return (matrix) {values, nRows, nCols};
 }
@@ -331,8 +331,54 @@ void transposeIfSquareMatrixHasNotEqualSumOfRows(matrix m) {
         transposeSquareMatrix(m);
 }
 
-bool isMutuallyInverseMatrices(matrix m1, matrix m2){
-    if(m1.values == NULL || m2.values == NULL)
+bool isMutuallyInverseMatrices(matrix m1, matrix m2) {
+    if (m1.values == NULL || m2.values == NULL)
         return 0;
     return isEMatrix(mulMatrices(m1, m2));
+}
+
+int max(const int *a, int b){
+    int max = a[0];
+    for (int i = 1; i < b; ++i)
+        if (a[i] > max)
+            max = a[i];
+
+    return max;
+}
+
+long long findSumOfMaxesOfPseudoDiagonal(matrix m) {
+    int numberOfPseudoDiagonals = m.nRows + m.nCols - 1;
+    int maxValueOfPseudoDiagonal[numberOfPseudoDiagonals];
+
+    for (int i = 1; i < m.nRows; ++i) {
+        int colIndex = 0;
+        int rowIndex = i;
+        int a[m.nCols];
+        int j = 0;
+
+        while(colIndex < m.nCols && rowIndex < m.nRows){
+            a[j] = m.values[rowIndex][colIndex];
+            rowIndex ++;
+            colIndex ++;
+            j++;
+        }
+        maxValueOfPseudoDiagonal[i - 1] = max(a, j);
+    }
+
+    for (int i = 1; i < m.nCols; ++i) {
+        int colIndex = i;
+        int rowIndex = 0;
+        int a[m.nRows];
+        int j = 0;
+
+        while(colIndex < m.nCols && rowIndex < m.nRows){
+            a[j] = m.values[rowIndex][colIndex];
+            rowIndex ++;
+            colIndex ++;
+            j++;
+        }
+        maxValueOfPseudoDiagonal[m.nRows + i - 1] = max(a, j);
+    }
+
+    return getSum(maxValueOfPseudoDiagonal, numberOfPseudoDiagonals);
 }
