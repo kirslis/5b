@@ -347,39 +347,29 @@ int max(const int *a, int b) {
 }
 
 long long findSumOfMaxesOfPseudoDiagonal(matrix m) {
-    int numberOfPseudoDiagonals = m.nRows + m.nCols - 1;
+    int numberOfPseudoDiagonals = m.nRows + m.nCols - 2;
     int maxValueOfPseudoDiagonal[numberOfPseudoDiagonals];
+    int countOfPseudoDiagonals = 0;
 
-    for (int i = 1; i < m.nRows; ++i) {
-        int colIndex = 0;
-        int rowIndex = i;
-        int a[m.nCols];
-        int j = 0;
+    for (int i = 0; i < m.nCols + m.nRows - 1; ++i) {
+        int iRow = m.nRows - 1 > i ? m.nRows - i - 1 : 0;
+        int iCol = m.nRows - 1 > i ? 0 : i - m.nRows + 1;
 
-        while (colIndex < m.nCols && rowIndex < m.nRows) {
-            a[j] = m.values[rowIndex][colIndex];
-            rowIndex++;
-            colIndex++;
-            j++;
+        int pseudoDiagonalElements[m.nRows];
+        int countOfElements = 0;
+
+        if (iRow != 0 || iCol != 0) {
+            while (iRow < m.nRows && iCol < m.nCols) {
+                pseudoDiagonalElements[countOfElements] = m.values[iRow][iCol];
+                countOfElements++;
+                iRow++;
+                iCol++;
+            }
+
+            maxValueOfPseudoDiagonal[countOfPseudoDiagonals] = max(pseudoDiagonalElements, countOfElements);
+            countOfPseudoDiagonals++;
         }
-        maxValueOfPseudoDiagonal[i - 1] = max(a, j);
     }
-
-    for (int i = 1; i < m.nCols; ++i) {
-        int colIndex = i;
-        int rowIndex = 0;
-        int a[m.nRows];
-        int j = 0;
-
-        while (colIndex < m.nCols && rowIndex < m.nRows) {
-            a[j] = m.values[rowIndex][colIndex];
-            rowIndex++;
-            colIndex++;
-            j++;
-        }
-        maxValueOfPseudoDiagonal[m.nRows + i - 1] = max(a, j);
-    }
-
     return getSum(maxValueOfPseudoDiagonal, numberOfPseudoDiagonals);
 }
 
@@ -397,19 +387,18 @@ int getMinInArea(matrix m) {
 
     int maxRowIndexForColl[m.nCols];
 
-    for (int i = 0; i < maxPos.colIndex; ++i) {
-        maxRowIndexForColl[i] = i + 1;
-    }
-    for (int i = maxPos.colIndex; i < m.nCols; ++i) {
-        maxRowIndexForColl[i] = maxPos.rowIndex - (i - maxPos.colIndex) + 1;
-    }
+    for (int i = 0; i < maxPos.colIndex; ++i)
+        maxRowIndexForColl[i] = maxPos.rowIndex - (maxPos.colIndex - i);
+
+    for (int i = maxPos.colIndex; i < m.nCols; ++i)
+        maxRowIndexForColl[i] = maxPos.rowIndex - (i - maxPos.colIndex);
 
     int valuesInArea[m.nCols * m.nRows];
     int countOfValuesInArea = 0;
 
     for (int iCol = 0; iCol < m.nCols; ++iCol) {
         int iRow = 0;
-        while (iRow < maxRowIndexForColl[iCol]) {
+        while (iRow <= maxRowIndexForColl[iCol]) {
             valuesInArea[countOfValuesInArea] = m.values[iRow][iCol];
             iRow++;
             countOfValuesInArea++;
