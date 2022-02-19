@@ -87,12 +87,12 @@ void test_isSquareMatrix_notSquareMatrix() {
     freeMemMatrix(m);
 }
 
-void test_isEMatrix_EMatrix(){
+void test_isEMatrix_EMatrix() {
     matrix m = createMatrixFromArray(
             (int[]) {
-                    1,0,0,
-                    0,1,0,
-                    0,0,1
+                    1, 0, 0,
+                    0, 1, 0,
+                    0, 0, 1
             },
             3, 3
     );
@@ -102,12 +102,12 @@ void test_isEMatrix_EMatrix(){
     freeMemMatrix(m);
 }
 
-void test_isEMatrix_notEMatrix(){
+void test_isEMatrix_notEMatrix() {
     matrix m = createMatrixFromArray(
             (int[]) {
-                    1,1,0,
-                    0,1,0,
-                    0,0,1
+                    1, 1, 0,
+                    0, 1, 0,
+                    0, 0, 1
             },
             3, 3
     );
@@ -117,12 +117,12 @@ void test_isEMatrix_notEMatrix(){
     freeMemMatrix(m);
 }
 
-void test_isSymmetricMatrix_symmetricalMatrix(){
+void test_isSymmetricMatrix_symmetricalMatrix() {
     matrix m = createMatrixFromArray(
             (int[]) {
-                    1,2,3,
-                    2,1,0,
-                    3,0,1
+                    1, 2, 3,
+                    2, 1, 0,
+                    3, 0, 1
             },
             3, 3
     );
@@ -132,12 +132,12 @@ void test_isSymmetricMatrix_symmetricalMatrix(){
     freeMemMatrix(m);
 }
 
-void test_isSymmetricMatrix_notSymmetricalMatrix(){
+void test_isSymmetricMatrix_notSymmetricalMatrix() {
     matrix m = createMatrixFromArray(
             (int[]) {
-                    1,2,2,
-                    2,1,0,
-                    3,0,1
+                    1, 2, 2,
+                    2, 1, 0,
+                    3, 0, 1
             },
             3, 3
     );
@@ -147,7 +147,7 @@ void test_isSymmetricMatrix_notSymmetricalMatrix(){
     freeMemMatrix(m);
 }
 
-void test_transposeSquareMatrix(){
+void test_transposeSquareMatrix() {
     matrix m = createMatrixFromArray(
             (int[]) {
                     1, 2, 3,
@@ -736,11 +736,11 @@ void test_getMinInArea_firstElementIsMax() {
 void test_getMinInArea_middleElementIsMax() {
     matrix m = createMatrixFromArray(
             (int[]) {
-                    5, 2, 4,1,7,9,
-                    1, 9, 6,2,7,4,
-                    7, 0, 3,1,5,3,
-                    3,5,6,7,8,8,
-                    11,12,20,14,2
+                    5, 2, 4, 1, 7, 9,
+                    1, 9, 6, 2, 7, 4,
+                    7, 0, 3, 1, 5, 3,
+                    3, 5, 6, 7, 8, 8,
+                    11, 12, 20, 14, 2
             },
             5, 6
     );
@@ -750,7 +750,7 @@ void test_getMinInArea_middleElementIsMax() {
     freeMemMatrix(m);
 }
 
-void test_sortByDistances_positiveCoordinates(){
+void test_sortByDistances_positiveCoordinates() {
     matrix m = createMatrixFromArray(
             (int[]) {
                     7, 8, 3,
@@ -777,7 +777,7 @@ void test_sortByDistances_positiveCoordinates(){
     freeMemMatrix(m1);
 }
 
-void test_sortByDistances_negativeCoordinates(){
+void test_sortByDistances_negativeCoordinates() {
     matrix m = createMatrixFromArray(
             (int[]) {
                     -7, -8, -3,
@@ -804,7 +804,7 @@ void test_sortByDistances_negativeCoordinates(){
     freeMemMatrix(m1);
 }
 
-void test_sortByDistances_onePoint(){
+void test_sortByDistances_onePoint() {
     matrix m = createMatrixFromArray(
             (int[]) {
                     -7, -8, -3,
@@ -827,7 +827,7 @@ void test_sortByDistances_onePoint(){
     freeMemMatrix(m1);
 }
 
-void test_sortByDistances_oneCoordinate(){
+void test_sortByDistances_oneCoordinate() {
     matrix m = createMatrixFromArray(
             (int[]) {
                     -7,
@@ -854,7 +854,7 @@ void test_sortByDistances_oneCoordinate(){
     freeMemMatrix(m1);
 }
 
-void test_sortByDistances_voidMatrix(){
+void test_sortByDistances_voidMatrix() {
     matrix m = createMatrixFromArray(
             (int[]) {
             },
@@ -875,7 +875,7 @@ void test_sortByDistances_voidMatrix(){
     freeMemMatrix(m1);
 }
 
-void test_countEqClassesByRowsSum_positiveNums(){
+void test_countEqClassesByRowsSum_positiveNums() {
     matrix m = createMatrixFromArray(
             (int[]) {
                     7, 8, 3,
@@ -892,7 +892,7 @@ void test_countEqClassesByRowsSum_positiveNums(){
     freeMemMatrix(m);
 }
 
-void test_countEqClassesByRowsSum_negativeNums(){
+void test_countEqClassesByRowsSum_negativeNums() {
     matrix m = createMatrixFromArray(
             (int[]) {
                     -7, -8, -3,
@@ -909,7 +909,7 @@ void test_countEqClassesByRowsSum_negativeNums(){
     freeMemMatrix(m);
 }
 
-void test_countEqClassesByRowsSum_oneRow(){
+void test_countEqClassesByRowsSum_oneRow() {
     matrix m = createMatrixFromArray(
             (int[]) {
                     -7, -8, -3
@@ -924,7 +924,7 @@ void test_countEqClassesByRowsSum_oneRow(){
     freeMemMatrix(m);
 }
 
-void test_countEqClassesByRowsSum_oneCol(){
+void test_countEqClassesByRowsSum_oneCol() {
     matrix m = createMatrixFromArray(
             (int[]) {
                     -7,
@@ -941,7 +941,7 @@ void test_countEqClassesByRowsSum_oneCol(){
     freeMemMatrix(m);
 }
 
-void test_countEqClassesByRowsSum_zeroMatrix(){
+void test_countEqClassesByRowsSum_zeroMatrix() {
     matrix m = createMatrixFromArray(
             (int[]) {
             },
@@ -953,6 +953,90 @@ void test_countEqClassesByRowsSum_zeroMatrix(){
     assert(countEqClassesByRowsSum(m) == 0);
 
     freeMemMatrix(m);
+}
+
+void test_swapPenultimateRow_positiveElements() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    7, 8, 3,
+                    9, 2, 1,
+                    4, 5, 6
+            },
+            3, 3
+    );
+
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    7, 8, 3,
+                    3, 1, 6,
+                    4, 5, 6
+            },
+            3, 3
+    );
+
+
+    swapPenultimateRow(m);
+
+    assert(twoMatricesEqual(m, m1));
+
+    freeMemMatrix(m);
+    freeMemMatrix(m1);
+}
+
+void test_swapPenultimateRow_negativeElements() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    -7, -8, -3,
+                    -9, -2, -1,
+                    -4, -5, -6
+            },
+            3, 3
+    );
+
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    -7, -8, -3,
+                    -7, -9, -4,
+                    -4, -5, -6
+            },
+            3, 3
+    );
+
+
+    swapPenultimateRow(m);
+
+    assert(twoMatricesEqual(m, m1));
+
+    freeMemMatrix(m);
+    freeMemMatrix(m1);
+}
+
+void test_swapPenultimateRow_twoMin() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    7, 8, 3,
+                    1, 2, 1,
+                    4, 5, 6
+            },
+            3, 3
+    );
+
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    7, 8, 3,
+                    7, 1, 4,
+                    4, 5, 6
+            },
+            3, 3
+    );
+
+
+    swapPenultimateRow(m);
+
+    assert(twoMatricesEqual(m, m1));
+
+    freeMemMatrix(m);
+    freeMemMatrix(m1);
 }
 
 void test() {
@@ -1015,6 +1099,10 @@ void test() {
     test_countEqClassesByRowsSum_oneRow();
     test_countEqClassesByRowsSum_oneCol();
     test_countEqClassesByRowsSum_zeroMatrix();
+
+    test_swapPenultimateRow_positiveElements();
+    test_swapPenultimateRow_negativeElements();
+    test_swapPenultimateRow_twoMin();
 }
 
 

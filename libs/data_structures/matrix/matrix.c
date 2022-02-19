@@ -413,7 +413,7 @@ float getDistance(const int *a, int n) {
     long long sum = 0;
 
     for (int i = 0; i < n; ++i) {
-        sum += (long long )a[i] * a[i];
+        sum += (long long) a[i] * a[i];
     }
 
     return sqrt(sum);
@@ -443,7 +443,7 @@ void sortByDistances(matrix m) {
     insertionSortRowsMatrixByRowCriteriaF(m, getDistance);
 }
 
-bool isContained(const long long *a, int n, long long num){
+bool isContained(const long long *a, int n, long long num) {
     bool isUnique = 1;
     int i = 0;
     while (isUnique == 1 && i < n) {
@@ -453,18 +453,44 @@ bool isContained(const long long *a, int n, long long num){
     return isUnique;
 }
 
-int countEqClassesByRowsSum(matrix m){
+int countEqClassesByRowsSum(matrix m) {
     long long uniqueClasses[m.nRows];
     int countOfClasses = 0;
 
     for (int i = 0; i < m.nRows; ++i) {
         long long class = getSum(m.values[i], m.nCols);
 
-        if (isContained(uniqueClasses,countOfClasses, class)){
+        if (isContained(uniqueClasses, countOfClasses, class)) {
             uniqueClasses[countOfClasses] = class;
             countOfClasses += 1;
         }
     }
 
     return countOfClasses;
+}
+
+position getLeftMin(matrix m) {
+    int minElement = m.values[0][0];
+    position minPos = {0, 0};
+
+    for (int i = 0; i < m.nCols; ++i)
+        for (int j = 0; j < m.nRows; ++j)
+            if (m.values[j][i] < minElement) {
+                minElement = m.values[j][i];
+                minPos = (position) {j, i};
+            }
+
+    return minPos;
+}
+
+void swapPenultimateRow(matrix m) {
+    position minPos = getLeftMin(m);
+
+    int preLastColElement = m.values[m.nRows - 2][minPos.colIndex];
+
+    for (int i = 0; i < m.nRows; ++i)
+        m.values[m.nRows - 2][i] = m.values[i][minPos.colIndex];
+
+    if (minPos.colIndex < minPos.rowIndex)
+        m.values[m.nRows - 2][minPos.rowIndex] = preLastColElement;
 }

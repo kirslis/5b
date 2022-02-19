@@ -91,5 +91,8 @@ bool isContained(const long long *a, int n, long long num);
 
 int countEqClassesByRowsSum(matrix m);
 
+position getLeftMin(matrix m);
+
+void swapPenultimateRow(matrix m);
 
 #endif //COURSE_MATRIX_H
