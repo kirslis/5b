@@ -442,3 +442,29 @@ void insertionSortRowsMatrixByRowCriteriaF(matrix m, float (*criteria)(const int
 void sortByDistances(matrix m) {
     insertionSortRowsMatrixByRowCriteriaF(m, getDistance);
 }
+
+bool isContained(const long long *a, int n, long long num){
+    bool isUnique = 1;
+    int i = 0;
+    while (isUnique == 1 && i < n) {
+        isUnique = a[i] != num;
+        i++;
+    }
+    return isUnique;
+}
+
+int countEqClassesByRowsSum(matrix m){
+    long long uniqueClasses[m.nRows];
+    int countOfClasses = 0;
+
+    for (int i = 0; i < m.nRows; ++i) {
+        long long class = getSum(m.values[i], m.nCols);
+
+        if (isContained(uniqueClasses,countOfClasses, class)){
+            uniqueClasses[countOfClasses] = class;
+            countOfClasses += 1;
+        }
+    }
+
+    return countOfClasses;
+}

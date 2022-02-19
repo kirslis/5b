@@ -875,6 +875,86 @@ void test_sortByDistances_voidMatrix(){
     freeMemMatrix(m1);
 }
 
+void test_countEqClassesByRowsSum_positiveNums(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    7, 8, 3,
+                    9, 2, 1,
+                    4, 5, 6
+            },
+            3, 3
+    );
+
+    sortByDistances(m);
+
+    assert(countEqClassesByRowsSum(m) == 3);
+
+    freeMemMatrix(m);
+}
+
+void test_countEqClassesByRowsSum_negativeNums(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    -7, -8, -3,
+                    -9, -2, -1,
+                    -4, -5, -6
+            },
+            3, 3
+    );
+
+    sortByDistances(m);
+
+    assert(countEqClassesByRowsSum(m) == 3);
+
+    freeMemMatrix(m);
+}
+
+void test_countEqClassesByRowsSum_oneRow(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    -7, -8, -3
+            },
+            1, 3
+    );
+
+    sortByDistances(m);
+
+    assert(countEqClassesByRowsSum(m) == 1);
+
+    freeMemMatrix(m);
+}
+
+void test_countEqClassesByRowsSum_oneCol(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    -7,
+                    -9,
+                    -4
+            },
+            3, 1
+    );
+
+    sortByDistances(m);
+
+    assert(countEqClassesByRowsSum(m) == 3);
+
+    freeMemMatrix(m);
+}
+
+void test_countEqClassesByRowsSum_zeroMatrix(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+            },
+            0, 0
+    );
+
+    sortByDistances(m);
+
+    assert(countEqClassesByRowsSum(m) == 0);
+
+    freeMemMatrix(m);
+}
+
 void test() {
     test_swapRows();
 
@@ -929,6 +1009,12 @@ void test() {
     test_sortByDistances_negativeCoordinates();
     test_sortByDistances_onePoint();
     test_sortByDistances_oneCoordinate();
+
+    test_countEqClassesByRowsSum_positiveNums();
+    test_countEqClassesByRowsSum_negativeNums();
+    test_countEqClassesByRowsSum_oneRow();
+    test_countEqClassesByRowsSum_oneCol();
+    test_countEqClassesByRowsSum_zeroMatrix();
 }
 
 

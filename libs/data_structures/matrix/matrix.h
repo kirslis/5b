@@ -87,5 +87,9 @@ void insertionSortRowsMatrixByRowCriteriaF(matrix m, float (*criteria)(const int
 
 void sortByDistances(matrix m);
 
+bool isContained(const long long *a, int n, long long num);
+
+int countEqClassesByRowsSum(matrix m);
+
 
 #endif //COURSE_MATRIX_H
