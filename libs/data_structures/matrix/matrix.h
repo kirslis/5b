@@ -81,4 +81,11 @@ long long findSumOfMaxesOfPseudoDiagonal(matrix m);
 
 int getMinInArea(matrix m);
 
+float getDistance(const int *a, int n);
+
+void insertionSortRowsMatrixByRowCriteriaF(matrix m, float (*criteria)(const int *, int));
+
+void sortByDistances(matrix m);
+
+
 #endif //COURSE_MATRIX_H

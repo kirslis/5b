@@ -750,171 +750,185 @@ void test_getMinInArea_middleElementIsMax() {
     freeMemMatrix(m);
 }
 
-void test_getMinInArea_rectangleMatrixMinInBot() {
+void test_sortByDistances_positiveCoordinates(){
     matrix m = createMatrixFromArray(
             (int[]) {
-                    10, 7, 5, 6,
-                    3, 11, 8, 9,
-                    4, 1, 12, 2
+                    7, 8, 3,
+                    9, 2, 1,
+                    4, 5, 6
             },
-            3, 4);
+            3, 3
+    );
 
-    assert(getMinInArea(m) == 5);
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    4, 5, 6,
+                    9, 2, 1,
+                    7, 8, 3
+            },
+            3, 3
+    );
+
+    sortByDistances(m);
+
+    assert(twoMatricesEqual(m, m1));
 
     freeMemMatrix(m);
+    freeMemMatrix(m1);
 }
 
-void test_getMinInArea_rectangleMatrixMinInMiddle() {
+void test_sortByDistances_negativeCoordinates(){
     matrix m = createMatrixFromArray(
             (int[]) {
-                    6, 8, 9, 2,
-                    7, 12, 3, 4,
-                    10, 11, 5, 1
+                    -7, -8, -3,
+                    -9, -2, -1,
+                    -4, -5, -6
             },
-            3, 4);
+            3, 3
+    );
 
-    assert(getMinInArea(m) == 6);
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    -4, -5, -6,
+                    -9, -2, -1,
+                    -7, -8, -3
+            },
+            3, 3
+    );
+
+    sortByDistances(m);
+
+    assert(twoMatricesEqual(m, m1));
 
     freeMemMatrix(m);
+    freeMemMatrix(m1);
 }
 
-void test_getMinInArea_rectangleVerticalMatrix_1() {
+void test_sortByDistances_onePoint(){
     matrix m = createMatrixFromArray(
             (int[]) {
-                    6, 8, 9, 4,
-                    7, 12, 3, 6,
-                    10, 11, 5, 15,
-                    11, 14, 13, 1,
-                    16, 17, 18, 19
+                    -7, -8, -3,
             },
-            5, 4);
+            1, 3
+    );
 
-    assert(getMinInArea(m) == 1);
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    -7, -8, -3
+            },
+            1, 3
+    );
+
+    sortByDistances(m);
+
+    assert(twoMatricesEqual(m, m1));
 
     freeMemMatrix(m);
+    freeMemMatrix(m1);
 }
 
-void test_getMinInArea_rectangleVerticalMatrix_2() {
+void test_sortByDistances_oneCoordinate(){
     matrix m = createMatrixFromArray(
             (int[]) {
-                    6, 8, 9, 4,
-                    7, 12, 3, 6,
-                    10, 14, 5, 11,
-                    11, 1, 13, 15,
-                    16, 17, 18, 20
+                    -7,
+                    -9,
+                    -4
             },
-            5, 4);
+            3, 1
+    );
 
-    assert(getMinInArea(m) == 3);
+    matrix m1 = createMatrixFromArray(
+            (int[]) {
+                    -4,
+                    -7,
+                    -9,
+            },
+            3, 1
+    );
+
+    sortByDistances(m);
+
+    assert(twoMatricesEqual(m, m1));
 
     freeMemMatrix(m);
+    freeMemMatrix(m1);
 }
 
-void test_getMinInArea_oneElem() {
+void test_sortByDistances_voidMatrix(){
     matrix m = createMatrixFromArray(
             (int[]) {
-                    6
             },
-            1, 1);
+            0, 0
+    );
 
-    assert(getMinInArea(m) == 6);
-
-    freeMemMatrix(m);
-}
-
-void test_getMinInArea_oneRow() {
-    matrix m = createMatrixFromArray(
+    matrix m1 = createMatrixFromArray(
             (int[]) {
-                    6,
-                    2,
-                    8,
-                    1,
-                    7
-
             },
-            5, 1);
+            0, 0
+    );
 
-    assert(getMinInArea(m) == 2);
+    sortByDistances(m);
+
+    assert(twoMatricesEqual(m, m1));
 
     freeMemMatrix(m);
+    freeMemMatrix(m1);
 }
-
-void test_getMinInArea_oneCol() {
-    matrix m = createMatrixFromArray(
-            (int[]) {
-                    6, 2, 8, 1, 7
-
-            },
-            1, 5);
-
-    assert(getMinInArea(m) == 8);
-
-    freeMemMatrix(m);
-}
-
-
-void test_getMinInArea() {
-    test_getMinInArea_rectangleMatrixMinInBot();
-    test_getMinInArea_rectangleMatrixMinInMiddle();
-    test_getMinInArea_rectangleVerticalMatrix_1();
-    test_getMinInArea_rectangleVerticalMatrix_2();
-    test_getMinInArea_oneElem();
-    test_getMinInArea_oneRow();
-    test_getMinInArea_oneCol();
-}
-
 
 void test() {
     test_swapRows();
 
-    test_getMinInArea();
+    test_swapColumns();
 
-//    test_swapColumns();
-//
-//    test_isSquareMatrix_squareMatrix();
-//    test_isSquareMatrix_notSquareMatrix();
-//
-//    test_isEMatrix_EMatrix();
-//    test_isEMatrix_notEMatrix();
-//
-//    test_isSymmetricMatrix_symmetricalMatrix();
-//    test_isSymmetricMatrix_notSymmetricalMatrix();
-//
-//    test_transposeSquareMatrix();
-//
-//    test_swapMinAndMaxRows_differentRows();
-//    test_swapMinAndMaxRows_sameRows();
-//    test_swapMinAndMaxRows_zeroMatrix();
-//
-//    test_sortRowsByMaxElement_differentMaxElements();
-//    test_sortRowsByMaxElement_sameMaxElements();
-//    test_sortRowsByMaxElement_zeroMatrix();
-//
-//    test_sortColsByMinElement_sameMinElements();
-//    test_sortColsByMinElement_differentMinElements();
-//    test_sortColsByMinElement_zeroMatrix();
-//
-//    test_getSquareOfMatrixIfSymmetric_symmetricMatrix();
-//    test_getSquareOfMatrixIfSymmetric_notSymmetricMatrix();
-//    test_getSquareOfMatrixIfSymmetric_zeroMatrix();
-//
-//    test_transposeIfSquareMatrixHasNotEqualSumOfRows_noEqualRowsSum();
-//    test_transposeIfSquareMatrixHasNotEqualSumOfRows_EqualRowsSum();
-//    test_transposeIfSquareMatrixHasNotEqualSumOfRows_zeroMatrix();
-//
-//    test_isMutuallyInverseMatrices_inverseMatrices();
-//    test_isMutuallyInverseMatrices_notInverseMatrices();
-//    test_isMutuallyInverseMatrices_EMatrices();
-//    test_isMutuallyInverseMatrices_zeroMatrices();
-//
-//    test_findSumOfMaxesOfPseudoDiagonal_squareMatrix();
-//    test_findSumOfMaxesOfPseudoDiagonal_rectangularMatrix();
-//    test_findSumOfMaxesOfPseudoDiagonal_EMatrix();
-//    test_findSumOfMaxesOfPseudoDiagonal_emptyMatrix();
-//
-//    test_getMinInArea_lastElementIsMax();
-//    test_getMinInArea_firstElementIsMax();
-//    test_getMinInArea_middleElementIsMax();
+    test_isSquareMatrix_squareMatrix();
+    test_isSquareMatrix_notSquareMatrix();
+
+    test_isEMatrix_EMatrix();
+    test_isEMatrix_notEMatrix();
+
+    test_isSymmetricMatrix_symmetricalMatrix();
+    test_isSymmetricMatrix_notSymmetricalMatrix();
+
+    test_transposeSquareMatrix();
+
+    test_swapMinAndMaxRows_differentRows();
+    test_swapMinAndMaxRows_sameRows();
+    test_swapMinAndMaxRows_zeroMatrix();
+
+    test_sortRowsByMaxElement_differentMaxElements();
+    test_sortRowsByMaxElement_sameMaxElements();
+    test_sortRowsByMaxElement_zeroMatrix();
+
+    test_sortColsByMinElement_sameMinElements();
+    test_sortColsByMinElement_differentMinElements();
+    test_sortColsByMinElement_zeroMatrix();
+
+    test_getSquareOfMatrixIfSymmetric_symmetricMatrix();
+    test_getSquareOfMatrixIfSymmetric_notSymmetricMatrix();
+    test_getSquareOfMatrixIfSymmetric_zeroMatrix();
+
+    test_transposeIfSquareMatrixHasNotEqualSumOfRows_noEqualRowsSum();
+    test_transposeIfSquareMatrixHasNotEqualSumOfRows_EqualRowsSum();
+    test_transposeIfSquareMatrixHasNotEqualSumOfRows_zeroMatrix();
+
+    test_isMutuallyInverseMatrices_inverseMatrices();
+    test_isMutuallyInverseMatrices_notInverseMatrices();
+    test_isMutuallyInverseMatrices_EMatrices();
+    test_isMutuallyInverseMatrices_zeroMatrices();
+
+    test_findSumOfMaxesOfPseudoDiagonal_squareMatrix();
+    test_findSumOfMaxesOfPseudoDiagonal_rectangularMatrix();
+    test_findSumOfMaxesOfPseudoDiagonal_EMatrix();
+    test_findSumOfMaxesOfPseudoDiagonal_emptyMatrix();
+
+    test_getMinInArea_lastElementIsMax();
+    test_getMinInArea_firstElementIsMax();
+    test_getMinInArea_middleElementIsMax();
+
+    test_sortByDistances_positiveCoordinates();
+    test_sortByDistances_negativeCoordinates();
+    test_sortByDistances_onePoint();
+    test_sortByDistances_oneCoordinate();
 }
 
 

@@ -6,6 +6,7 @@
 #include "stdio.h"
 #include "stdbool.h"
 #include "assert.h"
+#include "math.h"
 
 matrix getMemMatrix(int nRows, int nCols) {
     int **values = (int **) malloc(sizeof(int *) * nRows);
@@ -406,4 +407,38 @@ int getMinInArea(matrix m) {
     }
 
     return getMin(valuesInArea, countOfValuesInArea);
+}
+
+float getDistance(const int *a, int n) {
+    long long sum = 0;
+
+    for (int i = 0; i < n; ++i) {
+        sum += (long long )a[i] * a[i];
+    }
+
+    return sqrt(sum);
+}
+
+void insertionSortRowsMatrixByRowCriteriaF(matrix m, float (*criteria)(const int *, int)) {
+    float criteriaOfElements[m.nRows];
+
+    for (int i = 0; i < m.nRows; ++i)
+        criteriaOfElements[i] = criteria(m.values[i], m.nCols);
+
+    for (int i = 0; i < m.nRows; ++i) {
+        float t = criteriaOfElements[i];
+        int j = i;
+
+        while (j > 0 && criteriaOfElements[j - 1] > t) {
+            swapRows(m, j, j - 1);
+            criteriaOfElements[j] = criteriaOfElements[j - 1];
+            j--;
+        }
+
+        criteriaOfElements[j] = t;
+    }
+}
+
+void sortByDistances(matrix m) {
+    insertionSortRowsMatrixByRowCriteriaF(m, getDistance);
 }
