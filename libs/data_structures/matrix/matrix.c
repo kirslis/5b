@@ -556,3 +556,31 @@ void printMatrixWithMaxZeroRows(matrix *ms, int nMatrix) {
         if (countZeroRowsOfMatrix[i] == maxCountOfZeroRows)
             outputMatrix(ms[i]);
 }
+
+int getMaxMatrixNorm(matrix m) {
+    int maxMatrixNorm = abs(m.values[0][0]);
+
+    for (int i = 0; i < m.nRows; ++i)
+        for (int j = 0; j < m.nCols; ++j)
+            if (abs(m.values[i][j]) > maxMatrixNorm)
+                maxMatrixNorm = abs(m.values[i][j]);
+
+    return maxMatrixNorm;
+}
+
+void printMinNormMatrix(matrix *ms, int nMatrix) {
+    int matrixNorms[nMatrix];
+
+    matrixNorms[0] = getMaxMatrixNorm(ms[0]);
+    int minMatrixNorm = matrixNorms[0];
+
+    for (int i = 1; i < nMatrix; ++i) {
+        matrixNorms[i] = getMaxMatrixNorm(ms[i]);
+        if (matrixNorms[i] < minMatrixNorm)
+            minMatrixNorm = matrixNorms[i];
+    }
+
+    for (int i = 0; i < nMatrix; ++i)
+        if (matrixNorms[i] == minMatrixNorm)
+            outputMatrix(ms[i]);
+}

@@ -1098,29 +1098,29 @@ void test_countNonDescendingRowsMatrices_squareMatrices() {
     matrix *ms = getMemArrayOfMatrices(4, 2, 2);
 
     ms[0] = createMatrixFromArray((int[]) {
-                                          7,1,
-                                          1,1
+                                          7, 1,
+                                          1, 1
                                   },
                                   2, 2
     );
 
     ms[1] = createMatrixFromArray((int[]) {
-                                          1,6,
-                                          2,2
+                                          1, 6,
+                                          2, 2
                                   },
                                   2, 2
     );
 
     ms[2] = createMatrixFromArray((int[]) {
-                                          5,4,
-                                          2,3
+                                          5, 4,
+                                          2, 3
                                   },
                                   2, 2
     );
 
     ms[3] = createMatrixFromArray((int[]) {
-                                          1,3,
-                                          7,9
+                                          1, 3,
+                                          7, 9
                                   },
                                   2, 2
     );
@@ -1134,29 +1134,29 @@ void test_countNonDescendingRowsMatrices_rectangularMatrices() {
     matrix *ms = getMemArrayOfMatrices(4, 2, 3);
 
     ms[0] = createMatrixFromArray((int[]) {
-                                          7,1,5,
-                                          1,1,6
+                                          7, 1, 5,
+                                          1, 1, 6
                                   },
                                   2, 3
     );
 
     ms[1] = createMatrixFromArray((int[]) {
-                                          1,6,7,
-                                          2,2,2
+                                          1, 6, 7,
+                                          2, 2, 2
                                   },
                                   2, 3
     );
 
     ms[2] = createMatrixFromArray((int[]) {
-                                          5,4,3,
-                                          2,3,4
+                                          5, 4, 3,
+                                          2, 3, 4
                                   },
                                   2, 3
     );
 
     ms[3] = createMatrixFromArray((int[]) {
-                                          1,3,4,
-                                          7,9,10
+                                          1, 3, 4,
+                                          7, 9, 10
                                   },
                                   2, 3
     );
@@ -1170,25 +1170,25 @@ void test_countNonDescendingRowsMatrices_oneRowMatrices() {
     matrix *ms = getMemArrayOfMatrices(4, 1, 3);
 
     ms[0] = createMatrixFromArray((int[]) {
-                                          7,1,5
+                                          7, 1, 5
                                   },
                                   1, 3
     );
 
     ms[1] = createMatrixFromArray((int[]) {
-                                          1,6,7
+                                          1, 6, 7
                                   },
                                   1, 3
     );
 
     ms[2] = createMatrixFromArray((int[]) {
-                                          5,4,3
+                                          5, 4, 3
                                   },
                                   1, 3
     );
 
     ms[3] = createMatrixFromArray((int[]) {
-                                          1,3,4
+                                          1, 3, 4
                                   },
                                   1, 3
     );
@@ -1222,7 +1222,7 @@ void test_countNonDescendingRowsMatrices_oneColMatrices() {
                                           4,
                                           3
                                   },
-                                  3,1
+                                  3, 1
     );
 
     ms[3] = createMatrixFromArray((int[]) {
@@ -1230,7 +1230,7 @@ void test_countNonDescendingRowsMatrices_oneColMatrices() {
                                           3,
                                           4
                                   },
-                                  3,1
+                                  3, 1
     );
 
     assert(countNonDescendingRowsMatrices(ms, 4) == 4);
@@ -1238,47 +1238,47 @@ void test_countNonDescendingRowsMatrices_oneColMatrices() {
     freeMemMatrices(ms, 4);
 }
 
-void test_printMatrixWithMaxZeroRows(){
+void test_printMatrixWithMaxZeroRows() {
     matrix *ms = getMemArrayOfMatrices(5, 3, 2);
 
     ms[0] = createMatrixFromArray((int[]) {
-                                          0,1,
-                                          1,0,
-                                          0,0
+                                          0, 1,
+                                          1, 0,
+                                          0, 0
                                   },
                                   3, 2
     );
 
     ms[1] = createMatrixFromArray((int[]) {
-                                          1,1,
-                                          2,1,
-                                          1,1
+                                          1, 1,
+                                          2, 1,
+                                          1, 1
                                   },
                                   3, 2
     );
 
     ms[2] = createMatrixFromArray((int[]) {
-                                          0,0,
-                                          0,0,
-                                          4,7
+                                          0, 0,
+                                          0, 0,
+                                          4, 7
                                   },
-                                  3,2
+                                  3, 2
     );
 
     ms[3] = createMatrixFromArray((int[]) {
-                                          0,0,
-                                          0,1,
-                                          0,0
+                                          0, 0,
+                                          0, 1,
+                                          0, 0
                                   },
-                                  3,2
+                                  3, 2
     );
 
     ms[4] = createMatrixFromArray((int[]) {
-                                          0,1,
-                                          0,2,
-                                          0,3
+                                          0, 1,
+                                          0, 2,
+                                          0, 3
                                   },
-                                  3,2
+                                  3, 2
     );
 
     assert(countZeroRows(ms[0]) == 1);
@@ -1288,6 +1288,149 @@ void test_printMatrixWithMaxZeroRows(){
     assert(countZeroRows(ms[4]) == 0);
 
     freeMemMatrices(ms, 4);
+}
+
+void test_countZeroRows_squareMatrix() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    1, 2, 3,
+                    0, 0, 0,
+                    1, 6, 3
+            },
+            3, 3
+    );
+
+    assert(countZeroRows(m) == 1);
+
+    freeMemMatrix(m);
+}
+
+void test_countZeroRows_rectangularMatrix() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    1, 2, 3, 7,
+                    0, 0, 0, 0,
+                    1, 6, 3, 0
+            },
+            3, 4
+    );
+
+    assert(countZeroRows(m) == 1);
+
+    freeMemMatrix(m);
+}
+
+void test_countZeroRows_oneCollMatrix() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    1,
+                    0,
+                    1
+            },
+            3, 1
+    );
+
+    assert(countZeroRows(m) == 1);
+
+    freeMemMatrix(m);
+}
+
+void test_countZeroRows_oneRowMatrix() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    1, 0, 1
+            },
+            1, 3
+    );
+
+    assert(countZeroRows(m) == 0);
+
+    freeMemMatrix(m);
+}
+
+void test_countZeroRows_zeroMatrix() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+            },
+            0, 0
+    );
+
+    assert(countZeroRows(m) == 0);
+
+    freeMemMatrix(m);
+}
+
+void test_getMaxMatrixNorm_positiveMatrix() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    1, 2, 3,
+                    4, 5, 8,
+                    7, 3, 1
+            },
+            3, 3
+    );
+
+    assert(getMaxMatrixNorm(m) == 8);
+
+    freeMemMatrix(m);
+}
+
+void test_getMaxMatrixNorm_negativeMatrix() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    -1, -2, -3,
+                    -4, -5, -8,
+                    -7, -3, -1
+            },
+            3, 3
+    );
+
+    assert(getMaxMatrixNorm(m) == 8);
+
+    freeMemMatrix(m);
+}
+
+void test_getMaxMatrixNorm_mixedMatrix() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    1, -2, 3,
+                    -4, 5, -8,
+                    7, -3, 1
+            },
+            3, 3
+    );
+
+    assert(getMaxMatrixNorm(m) == 8);
+
+    freeMemMatrix(m);
+}
+
+void test_getMaxMatrixNorm_oneColMatrix() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    1,
+                    -4,
+                    7
+            },
+            3, 1
+    );
+
+    assert(getMaxMatrixNorm(m) == 7);
+
+    freeMemMatrix(m);
+}
+
+void test_getMaxMatrixNorm_oneRowMatrix() {
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    1,-4,7
+            },
+            1, 3
+    );
+
+    assert(getMaxMatrixNorm(m) == 7);
+
+    freeMemMatrix(m);
 }
 
 void test() {
@@ -1366,6 +1509,18 @@ void test() {
     test_countNonDescendingRowsMatrices_oneColMatrices();
 
     test_printMatrixWithMaxZeroRows();
+
+    test_countZeroRows_squareMatrix();
+    test_countZeroRows_rectangularMatrix();
+    test_countZeroRows_oneCollMatrix();
+    test_countZeroRows_oneRowMatrix();
+    test_countZeroRows_zeroMatrix();
+
+    test_getMaxMatrixNorm_positiveMatrix();
+    test_getMaxMatrixNorm_negativeMatrix();
+    test_getMaxMatrixNorm_mixedMatrix();
+    test_getMaxMatrixNorm_oneColMatrix();
+    test_getMaxMatrixNorm_oneRowMatrix();
 }
 
 

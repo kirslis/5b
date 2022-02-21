@@ -103,7 +103,10 @@ bool hasAllNonDescendingRows(matrix m);
 
 int countNonDescendingRowsMatrices(matrix *ms, int nMatrix);
 
-
 void printMatrixWithMaxZeroRows(matrix *ms, int nMatrix);
+
+int getMaxMatrixNorm(matrix m);
+
+void printMinNormMatrix(matrix *ms, int nMatrix);
 
 #endif //COURSE_MATRIX_H

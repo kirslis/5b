@@ -77,3 +77,16 @@
 5	195	6671682914481905	CMakeFiles/course.dir/main.c.obj	a18ef011961e3de7
 189	260	6671682915144701	libs/data_structures/libdata_structures.a	20f2306dffeb4b02
 261	367	6671682916158490	course.exe	68fe254756ffcbaf
+3	182	6671701417301419	CMakeFiles/course.dir/main.c.obj	a18ef011961e3de7
+183	267	6671701418102806	course.exe	68fe254756ffcbaf
+4	157	6671701605778757	CMakeFiles/course.dir/main.c.obj	a18ef011961e3de7
+157	258	6671701606753171	course.exe	68fe254756ffcbaf
+5	230	6671714499491282	CMakeFiles/course.dir/main.c.obj	a18ef011961e3de7
+11	232	6671714499491282	libs/data_structures/CMakeFiles/data_structures.dir/matrix/matrix.c.obj	8a8cc58a438637fd
+232	333	6671714500511830	libs/data_structures/libdata_structures.a	20f2306dffeb4b02
+334	612	6671714503209550	course.exe	68fe254756ffcbaf
+2	137	6671716403714465	CMakeFiles/course.dir/main.c.obj	a18ef011961e3de7
+137	211	6671716404436199	course.exe	68fe254756ffcbaf
+2	115	6671716946520362	libs/data_structures/CMakeFiles/data_structures.dir/matrix/matrix.c.obj	8a8cc58a438637fd
+116	167	6671716947041397	libs/data_structures/libdata_structures.a	20f2306dffeb4b02
+167	236	6671716947700461	course.exe	68fe254756ffcbaf
