@@ -53,7 +53,7 @@ position getMaxValuePos(matrix m);
 
 matrix createMatrixFromArray(const int *a, int nRows, int nCols);
 
-int countZeroRows(matrix m, int nRows, int nCols);
+int countZeroRows(matrix m);
 
 void insertionSortRowsMatrixByRowCriteria(matrix m, int (*criteria)(int *, int));
 
@@ -96,5 +96,14 @@ position getLeftMin(matrix m);
 void swapPenultimateRow(matrix m);
 
 int getNSpecialElement(matrix m);
+
+bool isNonDescendingSorted(const int *a, int n);
+
+bool hasAllNonDescendingRows(matrix m);
+
+int countNonDescendingRowsMatrices(matrix *ms, int nMatrix);
+
+
+void printMatrixWithMaxZeroRows(matrix *ms, int nMatrix);
 
 #endif //COURSE_MATRIX_H

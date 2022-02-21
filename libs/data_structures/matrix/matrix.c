@@ -171,12 +171,12 @@ matrix createMatrixFromArray(const int *a, int nRows, int nCols) {
     return m;
 }
 
-int countZeroRows(matrix m, int nRows, int nCols) {
+int countZeroRows(matrix m) {
     int countOfZeroRows = 0;
-    for (int i = 0; i < nRows; ++i) {
+    for (int i = 0; i < m.nRows; ++i) {
         int colsIndex = 0;
         bool isZeroLine = 1;
-        while (colsIndex < nCols && isZeroLine == 1) {
+        while (colsIndex < m.nCols && isZeroLine == 1) {
             isZeroLine = m.values[i][colsIndex] == 0;
             colsIndex += 1;
         }
@@ -495,7 +495,7 @@ void swapPenultimateRow(matrix m) {
         m.values[m.nRows - 2][minPos.rowIndex] = preLastColElement;
 }
 
-int getNSpecialElement(matrix m){
+int getNSpecialElement(matrix m) {
     int sumOfCol[m.nCols];
 
     for (int i = 0; i < m.nCols; ++i) {
@@ -513,4 +513,46 @@ int getNSpecialElement(matrix m){
             nSpecialElement += m.values[j][i] > (sumOfCol[i] - m.values[j][i]);
 
     return nSpecialElement;
+}
+
+bool isNonDescendingSorted(const int *a, int n) {
+    for (int i = 0; i < n - 1; ++i)
+        if (a[i] > a[i + 1])
+            return 0;
+
+    return 1;
+}
+
+bool hasAllNonDescendingRows(matrix m) {
+    for (int i = 0; i < m.nRows; ++i)
+        if (!isNonDescendingSorted(m.values[i], m.nCols))
+            return 0;
+
+    return 1;
+}
+
+int countNonDescendingRowsMatrices(matrix *ms, int nMatrix) {
+    int countGoodMatrices = 0;
+
+    for (int i = 0; i < nMatrix; ++i) {
+        countGoodMatrices += hasAllNonDescendingRows(ms[i]);
+    }
+
+    return countGoodMatrices;
+}
+
+void printMatrixWithMaxZeroRows(matrix *ms, int nMatrix) {
+    int countZeroRowsOfMatrix[nMatrix];
+    int maxCountOfZeroRows = 0;
+
+    for (int i = 0; i < nMatrix; ++i) {
+        countZeroRowsOfMatrix[i] = countZeroRows(ms[i]);
+
+        if (countZeroRowsOfMatrix[i] > maxCountOfZeroRows)
+            maxCountOfZeroRows = countZeroRowsOfMatrix[i];
+    }
+
+    for (int i = 0; i < nMatrix; ++i)
+        if (countZeroRowsOfMatrix[i] == maxCountOfZeroRows)
+            outputMatrix(ms[i]);
 }
