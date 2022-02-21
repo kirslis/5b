@@ -494,3 +494,23 @@ void swapPenultimateRow(matrix m) {
     if (minPos.colIndex < minPos.rowIndex)
         m.values[m.nRows - 2][minPos.rowIndex] = preLastColElement;
 }
+
+int getNSpecialElement(matrix m){
+    int sumOfCol[m.nCols];
+
+    for (int i = 0; i < m.nCols; ++i) {
+        sumOfCol[i] = 0;
+    }
+
+    for (int i = 0; i < m.nCols; ++i)
+        for (int j = 0; j < m.nRows; ++j)
+            sumOfCol[i] += m.values[j][i];
+
+    int nSpecialElement = 0;
+
+    for (int i = 0; i < m.nCols; ++i)
+        for (int j = 0; j < m.nRows; ++j)
+            nSpecialElement += m.values[j][i] > (sumOfCol[i] - m.values[j][i]);
+
+    return nSpecialElement;
+}

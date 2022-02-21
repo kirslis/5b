@@ -1039,6 +1039,61 @@ void test_swapPenultimateRow_twoMin() {
     freeMemMatrix(m1);
 }
 
+void test_getNSpecialElement_positiveElements(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    3,5,5,4,
+                    2,3,6,7,
+                    12,2,1,2
+            },
+            3, 4
+    );
+
+    assert(getNSpecialElement(m) == 2);
+
+    freeMemMatrix(m);
+}
+
+void test_getNSpecialElement_oneRow(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    3,5,5,4
+            },
+            1, 4
+    );
+
+    assert(getNSpecialElement(m) == 4);
+
+    freeMemMatrix(m);
+}
+
+void test_getNSpecialElement_negativeElements(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+                    -3,-5,-5,-4,
+                    -2,-3,-6,-7,
+                    -12,-2,-1,-2
+            },
+            3, 4
+    );
+
+    assert(getNSpecialElement(m) == 8);
+
+    freeMemMatrix(m);
+}
+
+void test_getNSpecialElement_zeroMatrix(){
+    matrix m = createMatrixFromArray(
+            (int[]) {
+            },
+            0, 0
+    );
+
+    assert(getNSpecialElement(m) == 0);
+
+    freeMemMatrix(m);
+}
+
 void test() {
     test_swapRows();
 
@@ -1103,6 +1158,11 @@ void test() {
     test_swapPenultimateRow_positiveElements();
     test_swapPenultimateRow_negativeElements();
     test_swapPenultimateRow_twoMin();
+
+    test_getNSpecialElement_positiveElements();
+    test_getNSpecialElement_oneRow();
+    test_getNSpecialElement_negativeElements();
+    test_getNSpecialElement_zeroMatrix();
 }
 
 
