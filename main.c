@@ -1281,8 +1281,6 @@ void test_printMatrixWithMaxZeroRows(){
                                   3,2
     );
 
-    printMatrixWithMaxZeroRows(ms, 5);
-
     assert(countZeroRows(ms[0]) == 1);
     assert(countZeroRows(ms[1]) == 0);
     assert(countZeroRows(ms[2]) == 2);
