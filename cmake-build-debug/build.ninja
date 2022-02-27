@@ -66,6 +66,12 @@ build CMakeFiles/course.dir/main.c.obj: C_COMPILER__course_Debug C$:/Users/HP/CL
   OBJECT_DIR = CMakeFiles\course.dir
   OBJECT_FILE_DIR = CMakeFiles\course.dir
 
+build CMakeFiles/course.dir/libs/string/string_.c.obj: C_COMPILER__course_Debug C$:/Users/HP/CLionProjects/course/libs/string/string_.c || cmake_object_order_depends_target_course
+  DEP_FILE = CMakeFiles\course.dir\libs\string\string_.c.obj.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles\course.dir
+  OBJECT_FILE_DIR = CMakeFiles\course.dir\libs\string
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target course
@@ -74,7 +80,7 @@ build CMakeFiles/course.dir/main.c.obj: C_COMPILER__course_Debug C$:/Users/HP/CL
 #############################################
 # Link the executable course.exe
 
-build course.exe: C_EXECUTABLE_LINKER__course_Debug CMakeFiles/course.dir/main.c.obj | libs/data_structures/libdata_structures.a libs/algorithms/libalgorithms.a || libs/algorithms/libalgorithms.a libs/data_structures/libdata_structures.a
+build course.exe: C_EXECUTABLE_LINKER__course_Debug CMakeFiles/course.dir/main.c.obj CMakeFiles/course.dir/libs/string/string_.c.obj | libs/data_structures/libdata_structures.a libs/algorithms/libalgorithms.a || libs/algorithms/libalgorithms.a libs/data_structures/libdata_structures.a
   FLAGS = -g
   LINK_LIBRARIES = libs/data_structures/libdata_structures.a  libs/algorithms/libalgorithms.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\course.dir

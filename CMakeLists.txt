@@ -3,7 +3,7 @@ project(course C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(course main.c)
+add_executable(course main.c libs/string/string_.c libs/string/string_.h)
 
 add_subdirectory(libs)
 target_link_libraries(course data_structures)
