@@ -10,6 +10,7 @@
 #include "digitToEnd.h"
 #include "replaceAllDigitAsSpaces.h"
 #include "replace.h"
+#include "areSortedWords.h"
 
 void allTests(){
     test_removeNonLetters();
@@ -17,6 +18,7 @@ void allTests(){
     test_digitToEnd();
     test_replaceAllDigitAsSpaces();
     test_replace();
+    test_areSortedWords();
 }
 
 #endif //COURSE_ALLTESTS_H

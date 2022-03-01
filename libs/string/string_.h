@@ -45,4 +45,6 @@ char *getEndOfString(char *s);
 
 void assertString(const char *expected, char *got, char const *fileName, char const *funcName, int line);
 
+int areWordsEqual(WordDescriptor w1, WordDescriptor w2);
+
 #endif

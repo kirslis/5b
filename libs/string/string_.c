@@ -126,6 +126,10 @@ bool getWordReverse(char *rbegin, char *rend, WordDescriptor *word){
     return 1;
 }
 
+int areWordsEqual(WordDescriptor w1, WordDescriptor w2) {
+    return strcmp(w1.begin, w2.begin);
+}
+
 //void digitToStart(WordDescriptor word) {
 //    char *endStringBuffer = copy(word.begin, word.end, _stringBuffer);
 //    char *recPosition = copyIfReverse(endStringBuffer - 1, _stringBuffer - 1, word.begin, isdigit);
