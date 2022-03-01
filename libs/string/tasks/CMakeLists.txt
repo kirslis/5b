@@ -1,0 +1,1 @@
+add_library(course main.c libs/string/string_.c libs/string/string_.h "libs/string/tasks/allTests.h" libs/string/tasks/removeNonLetters.h libs/string/tasks/removeExtraSpaces.h)

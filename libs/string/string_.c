@@ -4,6 +4,9 @@
 
 #include <ctype.h>
 #include "memory.h"
+#include "stdio.h"
+
+
 
 size_t strlen_(const char *begin) {
     char *end = begin;
@@ -56,13 +59,13 @@ int strcmp(const char *lhs, const char *rhs) {
     return *lhs - *rhs;
 }
 
-char *copy(const char *beginSource, const char *endSource, char *beginDestination){
+char *copy(const char *beginSource, const char *endSource, char *beginDestination) {
     memcpy(beginDestination, beginSource, endSource - beginSource);
 
     return beginDestination + (endSource - beginSource);
 }
 
-char* copyIf(char *beginSource, const char *endSource,char *beginDestination, int (*f)(int)){
+char *copyIf(char *beginSource, const char *endSource, char *beginDestination, int (*f)(int)) {
     while (beginSource != endSource) {
         if (f(*beginSource))
             *(beginDestination++) = *beginSource;
@@ -70,4 +73,23 @@ char* copyIf(char *beginSource, const char *endSource,char *beginDestination, in
         beginSource++;
     }
     return beginDestination;
+}
+
+char *getEndOfString(char *s) {
+    while (*s != '\0')
+        s++;
+
+    return s;
+}
+
+void assertString(const char *expected, char *got,
+                  char const *fileName, char const *funcName,
+                  int line) {
+    if (strcmp(expected, got)) {
+        fprintf(stderr, " File %s\n", fileName);
+        fprintf(stderr, "%s - failed on line %d\n", funcName, line);
+        fprintf(stderr, " Expected : \"%s \"\n", expected);
+        fprintf(stderr, "Got: \"%s\"\n\n", got);
+    } else
+        fprintf(stderr, "%s - OK\n", funcName);
 }
