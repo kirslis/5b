@@ -5,14 +5,23 @@
 #ifndef COURSE_STRING__H
 #define COURSE_STRING__H
 
-#endif //COURSE_STRING__H
-
 #include "stdint.h"
+#include "stdbool.h"
+
+
 
 #define ASSERT_STRING(expected, got) assertString (expected, got , \
  __FILE__ , __FUNCTION__ , __LINE__ )
 
-size_t strlen_(const char *begin);
+typedef struct WordDescriptor {
+    char *begin;
+    char *end;
+} WordDescriptor;
+
+
+bool getWord(char *beginSearch, WordDescriptor *word);
+
+size_t strlen_(char *begin);
 
 char *find(char *begin, char *end, int ch);
 
@@ -30,7 +39,10 @@ char *copy(const char *beginSource, const char *endSource, char *beginDestinatio
 
 char *copyIf(char *beginSource, const char *endSource, char *beginDestination, int (*f)(int));
 
+char *copyIfReverse(char *rbeginSource, const char *rendSource, char *beginDestination, int (*f)(int));
+
 char *getEndOfString(char *s);
 
 void assertString(const char *expected, char *got, char const *fileName, char const *funcName, int line);
 
+#endif

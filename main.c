@@ -1,9 +1,9 @@
-#include "libs/string/tasks/removeNonLetters.h"
+#include "libs/string/tasks/allTests.h"
 #include "stdio.h"
 
 
 
 int main() {
-    test_removeNonLetters();
+    allTests();
 }
 
