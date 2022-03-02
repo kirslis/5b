@@ -12,6 +12,7 @@
 #include "replace.h"
 #include "areSortedWords.h"
 #include "reverseWordsInString.h"
+#include "countPolindroms.h"
 
 void allTests(){
     test_removeNonLetters();
@@ -21,6 +22,7 @@ void allTests(){
     test_replace();
     test_areSortedWords();
     test_reverseWordsInString();
+    test_countOfPolindroms();
 }
 
 #endif //COURSE_ALLTESTS_H
