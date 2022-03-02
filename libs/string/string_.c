@@ -8,7 +8,7 @@
 #include "stdio.h"
 
 #define MAX_STRING_SIZE 100
-char _stringBuffer [ MAX_STRING_SIZE + 1];
+char _stringBuffer[MAX_STRING_SIZE + 1];
 
 size_t strlen_(char *begin) {
     char *end = begin;
@@ -50,6 +50,9 @@ char *findNonSpaceReverse(char *rbegin, const char *rend) {
 char *findSpaceReverse(char *rbegin, const char *rend) {
     while (rbegin != rend && !isspace(*rbegin))
         rbegin -= 1;
+
+    if (rbegin == rend)
+        *(rbegin - 1) = ' ';
 
     return rbegin;
 }
@@ -116,18 +119,31 @@ bool getWord(char *beginSearch, WordDescriptor *word) {
     return 1;
 }
 
-bool getWordReverse(char *rbegin, char *rend, WordDescriptor *word){
-    word->end = findNonSpaceReverse(rbegin, rend) + 1;
-    if (word->end == rend)
+bool getWordReverse(char *rbegin, char *rend, WordDescriptor *word) {
+    word->end = findNonSpaceReverse(rbegin, rend);
+
+    word->begin = findSpaceReverse(word->end, rend);
+
+    if (*word->end == '\0')
         return 0;
-
-    word->begin = findNonSpaceReverse(word->end, rend) + 1;
-
     return 1;
 }
 
 int areWordsEqual(WordDescriptor w1, WordDescriptor w2) {
     return strcmp(w1.begin, w2.begin);
+}
+
+void getBagOfWords(BagOfWords *bag, char *s) {
+    char *beginSearch = s;
+    bag->size = 0;
+    WordDescriptor w;
+
+    while (getWord(beginSearch, &w)) {
+        beginSearch = w.end;
+        bag->words[bag->size] = w;
+        bag->size++;
+    }
+
 }
 
 //void digitToStart(WordDescriptor word) {

@@ -142,7 +142,8 @@
 				6,
 				7,
 				8,
-				9
+				9,
+				10
 			]
 		}
 	],
@@ -198,6 +199,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "libs/string/tasks/areSortedWords.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "libs/string/tasks/reverseWordsInString.h",
 			"sourceGroupIndex" : 1
 		}
 	],

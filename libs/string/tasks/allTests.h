@@ -11,6 +11,7 @@
 #include "replaceAllDigitAsSpaces.h"
 #include "replace.h"
 #include "areSortedWords.h"
+#include "reverseWordsInString.h"
 
 void allTests(){
     test_removeNonLetters();
@@ -19,6 +20,7 @@ void allTests(){
     test_replaceAllDigitAsSpaces();
     test_replace();
     test_areSortedWords();
+    test_reverseWordsInString();
 }
 
 #endif //COURSE_ALLTESTS_H

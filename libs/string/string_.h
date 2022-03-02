@@ -8,6 +8,7 @@
 #include "stdint.h"
 #include "stdbool.h"
 
+#define MAX_N_WORDS_IN_STRING 20
 
 
 #define ASSERT_STRING(expected, got) assertString (expected, got , \
@@ -18,6 +19,10 @@ typedef struct WordDescriptor {
     char *end;
 } WordDescriptor;
 
+typedef struct BagOfWords {
+    WordDescriptor words[MAX_N_WORDS_IN_STRING];
+    size_t size;
+} BagOfWords;
 
 bool getWord(char *beginSearch, WordDescriptor *word);
 
@@ -46,5 +51,9 @@ char *getEndOfString(char *s);
 void assertString(const char *expected, char *got, char const *fileName, char const *funcName, int line);
 
 int areWordsEqual(WordDescriptor w1, WordDescriptor w2);
+
+bool getWordReverse(char *rbegin, char *rend, WordDescriptor *word);
+
+void getBagOfWords(BagOfWords *bag, char *s);
 
 #endif
