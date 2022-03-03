@@ -146,7 +146,8 @@
 				10,
 				11,
 				12,
-				13
+				13,
+				14
 			]
 		}
 	],
@@ -222,6 +223,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "libs/string/tasks/reverseOutoutWordsInString.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "libs/string/tasks/printWordBeforeFirstWordWithA.h",
 			"sourceGroupIndex" : 1
 		}
 	],
