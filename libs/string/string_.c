@@ -47,12 +47,12 @@ char *findNonSpaceReverse(char *rbegin, const char *rend) {
     return rbegin;
 }
 
-char *findSpaceReverse(char *rbegin, const char *rend) {
+char *findSpaceReverse(char *rbegin, char *rend) {
     while (rbegin != rend && !isspace(*rbegin))
         rbegin -= 1;
 
     if (rbegin == rend)
-        *(rbegin - 1) = ' ';
+        *(rbegin-- - 1) = ' ';
 
     return rbegin;
 }
@@ -122,10 +122,12 @@ bool getWord(char *beginSearch, WordDescriptor *word) {
 bool getWordReverse(char *rbegin, char *rend, WordDescriptor *word) {
     word->end = findNonSpaceReverse(rbegin, rend);
 
+
     word->begin = findSpaceReverse(word->end, rend);
 
-    if (*word->end == '\0')
+    if (word->end <= word->begin || (*rend == '\0' && *rbegin == '\0'))
         return 0;
+
     return 1;
 }
 
