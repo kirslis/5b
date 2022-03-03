@@ -144,7 +144,8 @@
 				8,
 				9,
 				10,
-				11
+				11,
+				12
 			]
 		}
 	],
@@ -210,6 +211,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "libs/string/tasks/countPolindroms.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "libs/string/tasks/getMixString.h",
 			"sourceGroupIndex" : 1
 		}
 	],

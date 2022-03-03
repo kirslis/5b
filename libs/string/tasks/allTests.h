@@ -13,6 +13,7 @@
 #include "areSortedWords.h"
 #include "reverseWordsInString.h"
 #include "countPolindroms.h"
+#include "getMixString.h"
 
 void allTests(){
     test_removeNonLetters();
@@ -23,6 +24,7 @@ void allTests(){
     test_areSortedWords();
     test_reverseWordsInString();
     test_countOfPolindroms();
+    test_getMixString();
 }
 
 #endif //COURSE_ALLTESTS_H
