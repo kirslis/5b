@@ -4,7 +4,6 @@
 
 
 int main() {
-    testAll_getWordBeforeFirstWordWithA();
-//    allTests();
+    allTests();
 }
 

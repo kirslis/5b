@@ -24,6 +24,9 @@ typedef struct BagOfWords {
     size_t size;
 } BagOfWords;
 
+static BagOfWords _bag1;
+static BagOfWords _bag2;
+
 bool getWord(char *beginSearch, WordDescriptor *word);
 
 size_t strlen_(char *begin);
@@ -55,5 +58,11 @@ int areWordsEqual(WordDescriptor w1, WordDescriptor w2);
 bool getWordReverse(char *rbegin, char *rend, WordDescriptor *word);
 
 void getBagOfWords(BagOfWords *bag, char *s);
+
+void wordDescriptionToString(WordDescriptor word, char *destination);
+
+bool areWordsSame(WordDescriptor w1, WordDescriptor w2);
+
+bool isContained(WordDescriptor w, char *s);
 
 #endif

@@ -147,7 +147,11 @@
 				11,
 				12,
 				13,
-				14
+				14,
+				15,
+				16,
+				17,
+				18
 			]
 		}
 	],
@@ -228,6 +232,26 @@
 		{
 			"backtrace" : 1,
 			"path" : "libs/string/tasks/printWordBeforeFirstWordWithA.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "libs/string/tasks/getLastWordInString1ContainedString2.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "libs/string/tasks/isContainingSameWords.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "libs/string/tasks/containPairWordsFromSameLits.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "libs/string/tasks/getStringFromWordsDifferentByLast.h",
 			"sourceGroupIndex" : 1
 		}
 	],

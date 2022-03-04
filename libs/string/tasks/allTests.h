@@ -14,6 +14,10 @@
 #include "reverseWordsInString.h"
 #include "countPolindroms.h"
 #include "getMixString.h"
+#include "getLastWordInString1ContainedString2.h"
+#include "isContainingSameWords.h"
+#include "containPairWordsFromSameLits.h"
+#include "getStringFromWordsDifferentByLast.h"
 
 void allTests(){
     test_removeNonLetters();
@@ -25,6 +29,10 @@ void allTests(){
     test_reverseWordsInString();
     test_countOfPolindroms();
     test_getMixString();
+    test_getLastWordInString1ContainedString2();
+    test_isContainingSameWords();
+    test_containPairWordsFromSameLits();
+    test_getStringFromWordsDifferentByLast();
 }
 
 #endif //COURSE_ALLTESTS_H

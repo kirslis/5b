@@ -21,7 +21,7 @@ void reverseWordsInString(char *s) {
     char *beginSearch = end - 1;
     WordDescriptor w;
 
-    while (getWordReverse(beginSearch, ___stringBuffer, &w)) {
+    while (getWordReverse(beginSearch, ___stringBuffer, &w) && beginSearch >= ___stringBuffer) {
         beginCopy = copy(w.begin - (w.begin == ___stringBuffer), w.end + 1, beginCopy);
 
         beginSearch -= w.end - w.begin + 1 + (w.begin == ___stringBuffer);

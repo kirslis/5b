@@ -66,6 +66,7 @@ int strcmp(const char *lhs, const char *rhs) {
 
 char *copy(const char *beginSource, const char *endSource, char *beginDestination) {
     memcpy(beginDestination, beginSource, endSource - beginSource);
+    *(beginDestination + (endSource - beginSource)) = '\0';
 
     return beginDestination + (endSource - beginSource);
 }
@@ -146,8 +147,38 @@ void getBagOfWords(BagOfWords *bag, char *s) {
         bag->size++;
     }
 
+    w.begin = w.end = s + strlen_(s);
+    bag->words[bag->size] = w;
 }
 
+void wordDescriptionToString(WordDescriptor word, char *destination) {
+    while (word.begin != word.end)
+        *destination++ = *word.begin++;
+    *destination = '\0';
+}
+
+bool areWordsSame(WordDescriptor w1, WordDescriptor w2) {
+    size_t word1Size = w1.end - w1.begin;
+    size_t word2Size = w2.end - w2.begin;
+
+    if (word1Size != word2Size)
+        return 0;
+    for (int i = 0; i < word1Size; ++i) {
+        if (*w1.begin++ != *w2.begin++)
+            return 0;
+    }
+    return 1;
+}
+
+bool isContained(WordDescriptor w, char *s) {
+    WordDescriptor checkingWord;
+    while (getWord(s, &checkingWord)) {
+        if (areWordsSame(w, checkingWord))
+            return 1;
+        s += checkingWord.end - checkingWord.begin;
+    }
+    return 0;
+}
 //void digitToStart(WordDescriptor word) {
 //    char *endStringBuffer = copy(word.begin, word.end, _stringBuffer);
 //    char *recPosition = copyIfReverse(endStringBuffer - 1, _stringBuffer - 1, word.begin, isdigit);
