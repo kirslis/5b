@@ -151,7 +151,10 @@
 				15,
 				16,
 				17,
-				18
+				18,
+				19,
+				20,
+				21
 			]
 		}
 	],
@@ -252,6 +255,21 @@
 		{
 			"backtrace" : 1,
 			"path" : "libs/string/tasks/getStringFromWordsDifferentByLast.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "libs/string/tasks/getWordBeforeFirstWordS1ContainedInS2.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "libs/string/tasks/deleteAllPalindros.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "libs/string/tasks/fillingSmallStringByReverseBigString.h",
 			"sourceGroupIndex" : 1
 		}
 	],

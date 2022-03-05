@@ -18,6 +18,9 @@
 #include "isContainingSameWords.h"
 #include "containPairWordsFromSameLits.h"
 #include "getStringFromWordsDifferentByLast.h"
+#include "getWordBeforeFirstWordS1ContainedInS2.h"
+#include "deleteAllPalindros.h"
+#include "fillingSmallStringByReverseBigString.h"
 
 void allTests(){
     test_removeNonLetters();
@@ -33,6 +36,9 @@ void allTests(){
     test_isContainingSameWords();
     test_containPairWordsFromSameLits();
     test_getStringFromWordsDifferentByLast();
+    test_getWordBeforeFirstWordS1ContainedInS2();
+    test_deleteAllPalindros();
+    test_fillingSmallStringByReverseBigString();
 }
 
 #endif //COURSE_ALLTESTS_H

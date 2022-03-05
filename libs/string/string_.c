@@ -179,6 +179,15 @@ bool isContained(WordDescriptor w, char *s) {
     }
     return 0;
 }
+
+bool isPoly(char *start, char *end) {
+    end--;
+    while (end >= start)
+        if (*start++ != *end--)
+            return 0;
+    return 1;
+}
+
 //void digitToStart(WordDescriptor word) {
 //    char *endStringBuffer = copy(word.begin, word.end, _stringBuffer);
 //    char *recPosition = copyIfReverse(endStringBuffer - 1, _stringBuffer - 1, word.begin, isdigit);

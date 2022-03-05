@@ -65,4 +65,6 @@ bool areWordsSame(WordDescriptor w1, WordDescriptor w2);
 
 bool isContained(WordDescriptor w, char *s);
 
+bool isPoly(char *start, char *end);
+
 #endif

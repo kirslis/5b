@@ -14,14 +14,6 @@
 #define MAX_STRING_SIZE 100
 char ___stringBuffer[MAX_STRING_SIZE + 1];
 
-bool isPoly(char *start, char *end) {
-    end--;
-    while (end >= start)
-        if (*start++ != *end--)
-            return 0;
-    return 1;
-}
-
 char *findComma(char *beginScan, char *endScan) {
     while (*beginScan != ',' && beginScan != endScan)
         beginScan++;
