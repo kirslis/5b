@@ -22,6 +22,7 @@
 #include "deleteAllPalindros.h"
 #include "fillingSmallStringByReverseBigString.h"
 #include "string.h"
+#include "isStringContainAllLitsOfWord.h"
 
 void allTests(){
     test_removeNonLetters();
@@ -40,6 +41,7 @@ void allTests(){
     test_getWordBeforeFirstWordS1ContainedInS2();
     test_deleteAllPalindros();
 //    test_fillingSmallStringByReverseBigString();
+    test_isStringContainAllLitsOfWord();
 }
 
 #endif //COURSE_ALLTESTS_H

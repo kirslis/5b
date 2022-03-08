@@ -10,9 +10,11 @@
 
 #define MAX_N_WORDS_IN_STRING 20
 #define MAX_STRING_SIZE 100
+#define MAX_WORD_SIZE 20
 
 static char _stringBuffer2[MAX_STRING_SIZE + 1];
 static char _stringBuffer[MAX_STRING_SIZE + 1];
+
 
 
 #define ASSERT_STRING(expected, got) assertString (expected, got , \

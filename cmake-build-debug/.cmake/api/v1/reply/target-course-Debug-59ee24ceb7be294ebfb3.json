@@ -154,7 +154,8 @@
 				18,
 				19,
 				20,
-				21
+				21,
+				22
 			]
 		}
 	],
@@ -270,6 +271,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "libs/string/tasks/fillingSmallStringByReverseBigString.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "libs/string/tasks/isStringContainAllLitsOfWord.h",
 			"sourceGroupIndex" : 1
 		}
 	],

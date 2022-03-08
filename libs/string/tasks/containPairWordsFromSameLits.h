@@ -11,7 +11,7 @@
 #include "stdio.h"
 #include "assert.h"
 
-#define MAX_WORD_SIZE 20
+
 
 void sortLitsByAlpha(WordDescriptor *w) {
     int wSize = w->end - w->begin;
