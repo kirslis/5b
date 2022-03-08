@@ -7,8 +7,7 @@
 #include <memory.h>
 #include "stdio.h"
 
-#define MAX_STRING_SIZE 100
-char _stringBuffer[MAX_STRING_SIZE + 1];
+
 
 size_t strlen_(char *begin) {
     char *end = begin;

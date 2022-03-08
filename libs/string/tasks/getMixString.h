@@ -11,11 +11,8 @@
 #include "stdio.h"
 #include "assert.h"
 
-#define MAX_STRING_SIZE 100
-char ___stringBuffer[MAX_STRING_SIZE + 1];
-
 char *getMixString(char *s1, char *s2) {
-    char *mixString = ___stringBuffer;
+    char *mixString = _stringBuffer;
     *mixString = '\0';
 
     char *result = mixString;

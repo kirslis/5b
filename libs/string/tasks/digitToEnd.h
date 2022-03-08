@@ -9,13 +9,10 @@
 #include <memory.h>
 #include "stdio.h"
 
-#define MAX_STRING_SIZE 100
-char __stringBuffer [ MAX_STRING_SIZE + 1];
-
 void digitToEnd(WordDescriptor word) {
-    char *endStringBuffer = copy(word.begin, word.end, __stringBuffer);
-    char *recPosition = copyIf(__stringBuffer, endStringBuffer, recPosition, isalpha);
-    copyIf(__stringBuffer, endStringBuffer, recPosition, isdigit);
+    char *endStringBuffer = copy(word.begin, word.end, _stringBuffer);
+    char *recPosition = copyIf(_stringBuffer, endStringBuffer, recPosition, isalpha);
+    copyIf(_stringBuffer, endStringBuffer, recPosition, isdigit);
 }
 
 void test_digitToEnd_digitsBefore(){

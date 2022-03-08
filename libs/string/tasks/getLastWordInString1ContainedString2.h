@@ -13,10 +13,6 @@
 
 #define MAX_WORD_SIZE 20
 
-#define MAX_STRING_SIZE 100
-char ___stringBuffer[MAX_STRING_SIZE + 1];
-char _wordBuffer[MAX_WORD_SIZE];
-
 WordDescriptor getLastWordInString1ContainedString2(char *s1, char *s2) {
     getBagOfWords(&_bag1, s1);
     bool isContainedFlag = 0;

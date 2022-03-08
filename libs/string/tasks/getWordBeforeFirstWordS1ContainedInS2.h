@@ -11,12 +11,6 @@
 #include "stdio.h"
 #include "assert.h"
 
-#define MAX_WORD_SIZE 20
-
-#define MAX_STRING_SIZE 100
-char ___stringBuffer[MAX_STRING_SIZE + 1];
-char _wordBuffer[MAX_WORD_SIZE];
-
 WordDescriptor getWordBeforeFirstWordS1ContainedInS2(char *s1, char *s2) {
     getBagOfWords(&_bag1, s1);
     bool isContainedFlag = 0;
@@ -26,7 +20,7 @@ WordDescriptor getWordBeforeFirstWordS1ContainedInS2(char *s1, char *s2) {
             isContainedFlag = 1;
         numberOfWord++;
     }
-//    numberOfWord++;
+
     if (isContainedFlag == 0)
         numberOfWord = _bag1.size+2;
     return _bag1.words[numberOfWord - 2];

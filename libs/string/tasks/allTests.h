@@ -21,6 +21,7 @@
 #include "getWordBeforeFirstWordS1ContainedInS2.h"
 #include "deleteAllPalindros.h"
 #include "fillingSmallStringByReverseBigString.h"
+#include "string.h"
 
 void allTests(){
     test_removeNonLetters();
@@ -38,7 +39,7 @@ void allTests(){
     test_getStringFromWordsDifferentByLast();
     test_getWordBeforeFirstWordS1ContainedInS2();
     test_deleteAllPalindros();
-    test_fillingSmallStringByReverseBigString();
+//    test_fillingSmallStringByReverseBigString();
 }
 
 #endif //COURSE_ALLTESTS_H

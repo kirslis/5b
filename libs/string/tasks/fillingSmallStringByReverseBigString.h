@@ -10,18 +10,12 @@
 #include <memory.h>
 #include "stdio.h"
 #include "assert.h"
-
-#define MAX_WORD_SIZE 20
-
-#define MAX_STRING_SIZE 100
-char ___stringBuffer[MAX_STRING_SIZE + 1];
-char _wordBuffer[MAX_WORD_SIZE];
-char _stringBuffer2[MAX_WORD_SIZE];
+#include "malloc.h"
 
 void fillingSmallStringByReverseBigString(char *s1, char *s2) {
-    copy(s1, s1 + strlen_(s1), ___stringBuffer);
+    copy(s1, s1 + strlen_(s1), _stringBuffer);
     copy(s2, s2 + strlen_(s2), _stringBuffer2);
-    getBagOfWords(&_bag1, ___stringBuffer);
+    getBagOfWords(&_bag1, _stringBuffer);
     getBagOfWords(&_bag2, _stringBuffer2);
 
     char *beginDtn;

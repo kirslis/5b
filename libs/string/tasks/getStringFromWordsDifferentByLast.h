@@ -11,16 +11,10 @@
 #include "stdio.h"
 #include "assert.h"
 
-#define MAX_WORD_SIZE 20
-
-#define MAX_STRING_SIZE 100
-char ___stringBuffer[MAX_STRING_SIZE + 1];
-char _wordBuffer[MAX_WORD_SIZE];
-
 char *getStringFromWordsDifferentByLast(char *s) {
     char *beginDtn = s;
-    char *beginSearch = copy(s, s + strlen_(s), ___stringBuffer);
-    getBagOfWords(&_bag1, ___stringBuffer);
+    copy(s, s + strlen_(s), _stringBuffer);
+    getBagOfWords(&_bag1, _stringBuffer);
     if (_bag1.size != 0)
         for (int i = 0; i < _bag1.size - 1; ++i) {
             if (!areWordsSame(_bag1.words[i], _bag1.words[_bag1.size - 1])) {

@@ -10,9 +10,6 @@
 #include <memory.h>
 #include "stdio.h"
 
-#define MAX_STRING_SIZE 100
-char __stringBuffer[MAX_STRING_SIZE + 1];
-
 bool isSameWords(char *s, char *w, size_t wSize) {
     for (int i = 0; i < wSize; ++i)
         if (*s++ != *w++)
@@ -29,9 +26,9 @@ void replace(char *source, char *w1, char *w2) {
         readPtr = source;
         recPtr = source;
     } else {
-        copy(source, getEndOfString(source), __stringBuffer);
-        *(__stringBuffer + strlen_(source)) ='\0';
-        readPtr = __stringBuffer;
+        copy(source, getEndOfString(source), _stringBuffer);
+        *(_stringBuffer + strlen_(source)) ='\0';
+        readPtr = _stringBuffer;
         recPtr = source;
     }
 

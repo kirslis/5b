@@ -10,13 +10,11 @@
 #include <memory.h>
 #include "stdio.h"
 
-#define MAX_STRING_SIZE 100
-char ___stringBuffer[MAX_STRING_SIZE + 1];
 #define DIGIT_DIFFERENCE  48
 
 void replaceAllDigitAsSpaces(char *s) {
     char *endOfString = getEndOfString(s);
-    char *startBuffer = ___stringBuffer;
+    char *startBuffer = _stringBuffer;
     char *endOfBuffer = copy(s, endOfString, startBuffer);
     *endOfBuffer = '\0';
 

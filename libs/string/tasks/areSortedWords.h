@@ -11,9 +11,6 @@
 #include "stdio.h"
 #include "assert.h"
 
-#define MAX_STRING_SIZE 100
-char __stringBuffer[MAX_STRING_SIZE + 1];
-
 bool areOrderedWords(char *s) {
     char *beginSearch = s;
     WordDescriptor currentWord;

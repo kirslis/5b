@@ -11,12 +11,6 @@
 #include "stdio.h"
 #include "assert.h"
 
-#define MAX_WORD_SIZE 20
-
-#define MAX_STRING_SIZE 100
-char ___stringBuffer[MAX_STRING_SIZE + 1];
-char _wordBuffer[MAX_WORD_SIZE];
-
 bool isContainingSameWords(char *s){
     getBagOfWords(&_bag1, s);
     int numberOfWord = 0;

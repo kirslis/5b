@@ -11,9 +11,6 @@
 #include "stdio.h"
 #include "assert.h"
 
-#define MAX_STRING_SIZE 100
-char ___stringBuffer[MAX_STRING_SIZE + 1];
-
 char *findComma(char *beginScan, char *endScan) {
     while (*beginScan != ',' && beginScan != endScan)
         beginScan++;

@@ -11,20 +11,18 @@
 #include "stdio.h"
 #include "assert.h"
 
-#define MAX_STRING_SIZE 100
-char ___stringBuffer[MAX_STRING_SIZE + 1];
 
 void reverseWordsInString(char *s) {
-    char *end = copy(s, getEndOfString(s), ___stringBuffer);
+    char *end = copy(s, getEndOfString(s), _stringBuffer);
     char *beginCopy = s - 1;
 
     char *beginSearch = end - 1;
     WordDescriptor w;
 
-    while (getWordReverse(beginSearch, ___stringBuffer, &w) && beginSearch >= ___stringBuffer) {
-        beginCopy = copy(w.begin - (w.begin == ___stringBuffer), w.end + 1, beginCopy);
+    while (getWordReverse(beginSearch, _stringBuffer, &w) && beginSearch >= _stringBuffer) {
+        beginCopy = copy(w.begin - (w.begin == _stringBuffer), w.end + 1, beginCopy);
 
-        beginSearch -= w.end - w.begin + 1 + (w.begin == ___stringBuffer);
+        beginSearch -= w.end - w.begin + 1 + (w.begin == _stringBuffer);
     }
 }
 

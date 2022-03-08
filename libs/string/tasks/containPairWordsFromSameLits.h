@@ -13,10 +13,6 @@
 
 #define MAX_WORD_SIZE 20
 
-#define MAX_STRING_SIZE 100
-char ___stringBuffer[MAX_STRING_SIZE + 1];
-char _wordBuffer[MAX_WORD_SIZE];
-
 void sortLitsByAlpha(WordDescriptor *w) {
     int wSize = w->end - w->begin;
     for (int i = 0; i < wSize; ++i) {
@@ -37,8 +33,8 @@ void sortLitsByAlpha(WordDescriptor *w) {
 
 
 bool containPairWordsFromSameLits(char *s) {
-    char *endSearch = copy(s, s + strlen_(s), ___stringBuffer);
-    char *beginSearch = ___stringBuffer;
+    char *endSearch = copy(s, s + strlen_(s), _stringBuffer);
+    char *beginSearch = _stringBuffer;
     getBagOfWords(&_bag1, beginSearch);
 
     for (int i = 0; i < _bag1.size; ++i) {

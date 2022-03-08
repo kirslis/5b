@@ -11,11 +11,6 @@
 #include "stdio.h"
 #include "assert.h"
 
-#define MAX_WORD_SIZE 20
-
-#define MAX_STRING_SIZE 100
-char ___stringBuffer[MAX_STRING_SIZE + 1];
-
 typedef enum WordBeforeFirstWordWithAReturnCode {
     FIRST_WORD_WITH_A,
     NOT_FOUND_A_WORD_WITH_A,
@@ -53,7 +48,7 @@ WordBeforeFirstWordWithAReturnCode printWordBeforeFirstWordWithA(char *s) {
         beginSearch += word.end - word.begin;
     }
 
-    char *outWord = ___stringBuffer;
+    char *outWord = _stringBuffer;
     copy(lastWord.begin, lastWord.end, outWord);
 
     printf("%s", outWord);
