@@ -11,7 +11,7 @@
 #include "stdio.h"
 #include "assert.h"
 
-void deleteAllPalindros(char *s) {
+void deleteAllPalindroms(char *s) {
     copy(s, s + strlen_(s), _stringBuffer);
     char *beginSearch = _stringBuffer;
     char *beginDtn = s;
@@ -30,28 +30,28 @@ void deleteAllPalindros(char *s) {
     *--beginDtn = '\0';
 }
 
-void test_deleteAllPalindros_poliWords() {
+void test_deleteAllPalindroms_poliWords() {
     char s[] = "aba boy do pap";
-    deleteAllPalindros(s);
+    deleteAllPalindroms(s);
     ASSERT_STRING("boy do", s);
 }
 
-void test_deleteAllPalindros_Latters() {
+void test_deleteAllPalindroms_Latters() {
     char s[] = "a b c d e";
-    deleteAllPalindros(s);
+    deleteAllPalindroms(s);
     ASSERT_STRING("a b c d e", s);
 }
 
-void test_deleteAllPalindros_noPoliWords() {
+void test_deleteAllPalindroms_noPoliWords() {
     char s[] = "abt boy do par";
-    deleteAllPalindros(s);
+    deleteAllPalindroms(s);
     ASSERT_STRING("abt boy do par", s);
 }
 
-void test_deleteAllPalindros() {
-   test_deleteAllPalindros_Latters();
-   test_deleteAllPalindros_noPoliWords();
-   test_deleteAllPalindros_poliWords();
+void test_deleteAllPalindroms() {
+    test_deleteAllPalindroms_Latters();
+    test_deleteAllPalindroms_noPoliWords();
+    test_deleteAllPalindroms_poliWords();
 }
 
 #endif //COURSE_DELETEALLPALINDROS_H

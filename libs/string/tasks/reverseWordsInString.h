@@ -13,17 +13,18 @@
 
 
 void reverseWordsInString(char *s) {
-    char *end = copy(s, getEndOfString(s), _stringBuffer);
-    char *beginCopy = s - 1;
+    copy(s, getEndOfString(s), _stringBuffer);
+    char *beginRead = _stringBuffer;
+    char *beginCopy = s;
 
-    char *beginSearch = end - 1;
-    WordDescriptor w;
+    getBagOfWords(&_bag1, beginRead);
 
-    while (getWordReverse(beginSearch, _stringBuffer, &w) && beginSearch >= _stringBuffer) {
-        beginCopy = copy(w.begin - (w.begin == _stringBuffer), w.end + 1, beginCopy);
-
-        beginSearch -= w.end - w.begin + 1 + (w.begin == _stringBuffer);
+    for (int i = _bag1.size; i > 0 ; --i) {
+        copy(_bag1.words[i - 1].begin, _bag1.words[i - 1].end, beginCopy);
+        beginCopy += _bag1.words[i-1].end - _bag1.words[i-1].begin;
+        *beginCopy++ = ' ';
     }
+    *(beginCopy - 1) = '\0';
 }
 
 void test_reverseWordsInString_moreLettersInWord() {

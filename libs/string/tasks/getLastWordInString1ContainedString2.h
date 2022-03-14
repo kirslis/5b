@@ -11,8 +11,6 @@
 #include "stdio.h"
 #include "assert.h"
 
-#define MAX_WORD_SIZE 20
-
 WordDescriptor getLastWordInString1ContainedString2(char *s1, char *s2) {
     getBagOfWords(&_bag1, s1);
     bool isContainedFlag = 0;

@@ -39,7 +39,7 @@ void allTests(){
     test_containPairWordsFromSameLits();
     test_getStringFromWordsDifferentByLast();
     test_getWordBeforeFirstWordS1ContainedInS2();
-    test_deleteAllPalindros();
+    test_deleteAllPalindroms();
 //    test_fillingSmallStringByReverseBigString();
     test_isStringContainAllLitsOfWord();
 }

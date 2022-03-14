@@ -13,22 +13,13 @@
 
 
 void reverseOutoutWordsInString(char *s) {
-    char *end = s + strlen_(s);
+    getBagOfWords(&_bag1, s);
 
-    char *beginSearch = end - 1;
-    WordDescriptor w;
-    char *outWord = _stringBuffer;
-
-    while (getWordReverse(beginSearch, s, &w) && beginSearch > s)  {
-        char *beginWord = (w.begin + (*w.begin == ' '));
-
-        copy(beginWord, w.end + 1, outWord);
-        *(outWord + (w.end - beginWord + 1)) = '\0';
-        printf("%s\n", outWord);
-        beginSearch -= w.end - w.begin;
-
-        if(*beginSearch != ' ' && beginSearch!=s)
-            beginSearch--;
+    for (int i = _bag1.size; i > 0 ; --i) {
+        char s[MAX_WORD_SIZE];
+        copy(_bag1.words[i - 1].begin, _bag1.words[i - 1].end, s);
+        *(s + strlen_(s)) = '\0';
+        printf("%s \n", s);
     }
 }
 
